@@ -3,7 +3,7 @@
 <%
 String URL = "jdbc:mysql://localhost/hakaton";
 String USER =  "root";
-String PASS="ekslek994";
+String PASS="hakathon";
 
 Connection conn=null;
 PreparedStatement pstmt = null;
@@ -73,7 +73,8 @@ outline: 0;
                     	while(rs.next())
                     	{
                     		String coin = rs.getString("COIN");
-                    		out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원<br><br>");
+                    		out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
+                    		
                     	}
                     }
                     catch(SQLException e)
@@ -86,9 +87,10 @@ outline: 0;
                     	if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
                     %>
+                <a href='logout.jsp'>logout</a><br><br>
                 </li>
                 <li>
-                    <a href="#">Mypage</a>
+                    <a href="mypage.jsp">Mypage</a>
                 </li>
                 <li>
                     <a href="#">Product</a>

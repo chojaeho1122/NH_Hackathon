@@ -3,7 +3,7 @@
 <%
 String URL = "jdbc:mysql://localhost/hakaton";
 String USER =  "root";
-String PASS="ekslek994";
+String PASS="hakathon";
 
 Connection conn=null;
 PreparedStatement pstmt = null;
