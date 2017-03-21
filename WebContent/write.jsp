@@ -53,6 +53,7 @@ table.upload {
     text-align: left;
     line-height: 1.5;
     margin: 0px 0px 0px 200px;
+    border-bottom: none;
 }
 table.upload th {
     width: 150px;
@@ -140,7 +141,7 @@ table.upload td {
 	<center>
 	<h1>Upload Your Product</h1>
 	<br><br>
-<form name=writeform method=post action="write_ok.jsp" enctype="multipart/form-data">
+<form name="writeform" method="post" action="write_ok.jsp" enctype="multipart/form-data">
   <tr>
    <td>
    <table class="upload" frame="void">
@@ -181,7 +182,7 @@ table.upload td {
      </tr>
      <tr align="center">
       <td>&nbsp;</td>
-      <td colspan="2"><input class=button type=button value="등록" OnClick="javascript:writeCheck();">
+      <td colspan="2"><input class=button type=submit value="등록">
        <input class=button type=button value="취소" OnClick="javascript:history.back(-1)">
       <td>&nbsp;</td>
      </tr>
