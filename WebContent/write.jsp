@@ -208,61 +208,6 @@ table.upload td {
         $("#wrapper").toggleClass("toggled");
     });
 
-    function writeCheck()
-      {
-       var form = document.writeform;
-       
-       if( !form.pname.value )   // form 에 있는 name 값이 없을 때
-       {
-        alert( "상품명을 입력해주세요" ); // 경고창 띄움
-        form.pname.focus();   // form 에 있는 name 위치로 이동
-        return;
-       }
-       
-       if( !form.category.value )
-       {
-        alert( "카테고리를 설정해주세요" );
-        form.category.focus();
-        return;
-       }
-       
-      if( !form.weight.value )
-       {
-        alert( "무게를 입력해주세요" );
-        form.weight.focus();
-        return;
-       }
-     
-      if( !form.price.value )
-      {
-       alert( "가격 입력해주세요" );
-       form.price.focus();
-       return;
-      }
-      
-      if( !form.due.value )
-      {
-       alert( "기한을 입력해주세요" );
-       form.due.focus();
-       return;
-      }
-      if( !form.image.value )
-      {
-       alert( "이미지를 업로드 해주세요" );
-       form.image.focus();
-       return;
-      }
-      if( !form.content.value )
-       {
-        alert( "내용을 입력해주세요" );
-        form.content.focus();
-        return;
-       }
-     
-      form.submit();
-      }
-
-    
     </script>
 
 </body>
