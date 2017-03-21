@@ -8,7 +8,7 @@
         Class.forName("org.gjt.mm.mysql.Driver");
         
         // 관리자 Login
-        String URL = "jdbc:mysql://localhost/hakaton";
+        String URL = "jdbc:mysql://localhost/hakathon";
 		String USER =  "root";
 		String PASS="hakathon";
 
