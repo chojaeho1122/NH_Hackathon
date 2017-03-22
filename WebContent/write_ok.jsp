@@ -49,6 +49,12 @@
     	pstmt.setString(9, farmer_id);
     	pstmt.executeUpdate();
     	
+    	String path = application.getRealPath("/images/product");
+    	MultipartRequest mr = new MultipartRequest( request, path, 1024*1024*5, "utf-8", new DefaultFileRenamePolicy());
+    	File s_file = mr.getFile( "image");
+    	String o_name = mr.getOriginalFileName( "s_file");
+
+    	
     	pstmt.close();
     	conn.close();
 
