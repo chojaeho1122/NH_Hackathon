@@ -18,7 +18,7 @@
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-        
+		
 		// sql 구사
          // 전 페이지인 write.jsp input에 입력한 값들을 변수에 담는다
          String pname= request.getParameter("pname");
@@ -49,10 +49,10 @@
     	pstmt.setString(9, farmer_id);
     	pstmt.executeUpdate();
     	
-    	pstmt.close();
-    	conn.close();
 
-        
+
+        pstmt.close();
+    	conn.close();
     }
 catch(SQLException e)
 {
