@@ -20,7 +20,7 @@ ResultSet rs=null;
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- font awesome -->
-    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
     <!-- Custom Style -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
  
@@ -45,6 +45,10 @@ outline: 0;
 border: 0;
 outline: 0;
 }
+
+ a:link { color: none;; text-decoration: none;}
+ a:visited { color: none; text-decoration: none;}
+ a:hover { color: none; text-decoration: none;}
 
 </style>
 <body>
@@ -109,7 +113,8 @@ outline: 0;
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><img src="images/menu.png" width="50" height="35"/></a>
+                    <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
+                        <!--<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><img src="images/menu.png" width="50" height="35"/></a>  -->
                     </div>
                 </div>
             </div>
