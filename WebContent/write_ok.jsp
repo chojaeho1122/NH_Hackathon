@@ -18,7 +18,7 @@
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		
+        
 		// sql 구사
          // 전 페이지인 write.jsp input에 입력한 값들을 변수에 담는다
          String pname= request.getParameter("pname");
@@ -49,9 +49,13 @@
     	pstmt.setString(9, farmer_id);
     	pstmt.executeUpdate();
     	
+    	String path = application.getRealPath("/images/product");
+    	MultipartRequest mr = new MultipartRequest( request, path, 1024*1024*5, "utf-8", new DefaultFileRenamePolicy());
+    	File s_file = mr.getFile( "image");
+    	String o_name = mr.getOriginalFileName( "s_file");
 
-
-        pstmt.close();
+    	
+    	pstmt.close();
     	conn.close();
     }
 catch(SQLException e)
