@@ -10,7 +10,7 @@
         // 관리자 Login
         String URL = "jdbc:mysql://localhost/hakathon";
 		String USER =  "root";
-		String PASS="hakathon";
+		String PASS="a1041717";
 
 		Connection conn=null;
 		PreparedStatement pstmt=null;
