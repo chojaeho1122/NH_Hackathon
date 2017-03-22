@@ -59,8 +59,7 @@ table.upload th {
     width: 150px;
     padding: 10px;
     font-weight: bold;
-    border-bottom: 1px solid #ccc;
-    background: #efefef;
+    border-bottom: none;
 }
 table.upload td {
     width: 350px;
