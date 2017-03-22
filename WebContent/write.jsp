@@ -144,9 +144,7 @@ table.upload td {
 	<center>
 	<h1>Upload Your Product</h1>
 	<br><br>
-<form name="writeform" method="post" action="write_ok.jsp" enctype="multipart/form-data">
-  <tr>
-   <td>
+<form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data">
    <table class="upload" frame="void">
      <tr>
       <th align="center">상품명</th>
@@ -172,7 +170,18 @@ table.upload td {
      </tr>
      <tr>
       <th align="center">상품판매기한</th>
-      <td><input name="due" size="20" maxlength="30"></td>
+      <td>
+<select name="due">
+      <option value="">판매기한</option>
+      <option value="1">1일</option>
+      <option value="2">2일</option>
+      <option value="3">3일</option>
+      <option value="4">4일</option>
+      <option value="5">5일</option>
+      <option value="6">6일</option>
+      <option value="7">7일</option>
+</select>
+</td>
      </tr>
     <tr>
       <th align="center">상품 사진</th>
@@ -180,7 +189,7 @@ table.upload td {
      </tr>
      <tr>
       <th align="center">상품 설명</th>
-      <td><textarea name="memo" cols="70" rows="13"></textarea></td>
+      <td><textarea name="contents" cols="70" rows="13"></textarea></td>
       <td>&nbsp;</td>
      </tr>
      <tr align="center">

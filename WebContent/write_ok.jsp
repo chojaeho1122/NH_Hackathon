@@ -31,12 +31,27 @@
          String contents= request.getParameter("contents");
          String farmer_id=(String)session.getAttribute("s_id");
         
+         
         // insert
         Class.forName("org.gjt.mm.mysql.Driver");
     	conn=DriverManager.getConnection(URL,USER,PASS);
-    	pstmt=conn.prepareStatement("INSERT INTO PRODUCT VALUE('0','" + pname + "','" + category + "','" + weight + "','" + price + "','" + due + "','" + pdate + "','" + image + "','" + contents + "','" + farmer_id + "','0','0')");
-    	pstmt.executeUpdate();
+    	pstmt=conn.prepareStatement("INSERT INTO PRODUCT VALUE('0',?,?,?,?,?,?,?,?,?,'0','0')");
+    	//pstmt=conn.prepareStatement("INSERT INTO PRODUCT VALUE('0','" + pname + "','" + category + "','" + weight + "','" + price + "','1','" + pdate + "','" + image + "','" + contents + "','" + farmer_id + "','0','0')");
         
+    	pstmt.setString(1, pname);
+    	pstmt.setString(2, category);
+    	pstmt.setString(3, weight);
+    	pstmt.setString(4, price);
+    	pstmt.setString(5, due);
+    	pstmt.setString(6, pdate);
+    	pstmt.setString(7, image);
+    	pstmt.setString(8, contents);
+    	pstmt.setString(9, farmer_id);
+    	pstmt.executeUpdate();
+    	
+    	pstmt.close();
+    	conn.close();
+
         
     }
 catch(SQLException e)
