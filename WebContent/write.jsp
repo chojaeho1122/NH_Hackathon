@@ -1,4 +1,4 @@
-<%@ page contentType = "text/html; charset=utf-8" %>
+<%@ page language="java" contentType = "text/html; charset=utf-8" %>
 <%@ page import = "java.sql.*" %>
 <%
 String URL = "jdbc:mysql://localhost/hakathon";
@@ -144,7 +144,7 @@ table.upload td {
 	<center>
 	<h1>Upload Your Product</h1>
 	<br><br>
-<form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data">
+<form name="writeform" method="post" action="write_ok.jsp" enctype="multipart/form-data">
   <tr>
    <td>
    <table class="upload" frame="void">

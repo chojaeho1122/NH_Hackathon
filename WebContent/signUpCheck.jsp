@@ -54,7 +54,7 @@
           response.sendRedirect("signUpFail.jsp"); //id 존재 
        }else{
           /* 2개 if문 DB안에 ID가 존재하는지 확인*/ 
-          if(whoareyou=="farmer"){
+          if(whoareyou.equals("farmer")){
              pstmt = conn.prepareStatement("INSERT INTO FAMER VALUES(?,?,?,?,?,?,?)");
              pstmt.setString(1,id);
              pstmt.setString(2,pwd);
@@ -65,15 +65,16 @@
              pstmt.setString(7,account); 
              response.sendRedirect("signUpSuccess.jsp");
           }
-          else if(whoareyou=="customer"){
-             pstmt = conn.prepareStatement("INSERT INTO USER VALUES(?,?,?,?,?,?,?)");
+          else if(whoareyou.equals("customer")){
+             pstmt = conn.prepareStatement("INSERT INTO USER VALUES(?,?,?,?,?,?,?,?)");
              pstmt.setString(1,id);
              pstmt.setString(2,pwd);
              pstmt.setString(3,email);
              pstmt.setString(4,address);
              pstmt.setString(5,"profile");
              pstmt.setString(6,"coin"); 
-             pstmt.setString(7,account); 
+             pstmt.setString(7,"123"); 
+             pstmt.setString(8,account); 
              response.sendRedirect("signUpSuccess.jsp");
           }
        }
