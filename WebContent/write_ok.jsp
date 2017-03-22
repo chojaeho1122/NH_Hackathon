@@ -26,7 +26,7 @@
          String weight= request.getParameter("weight");
          String price= request.getParameter("price");
          String due= request.getParameter("due");
-         String pdate= (new SimpleDateFormat("yyyyMMddHHmmss")).format( new Date() );
+         String pdate= new java.text.SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date() );
          String image= request.getParameter("image");
          String contents= request.getParameter("contents");
          String farmer_id=(String)session.getAttribute("s_id");
@@ -35,24 +35,13 @@
         Class.forName("org.gjt.mm.mysql.Driver");
     	conn=DriverManager.getConnection(URL,USER,PASS);
     	pstmt=conn.prepareStatement("INSERT INTO PRODUCT VALUE('0','" + pname + "','" + category + "','" + weight + "','" + price + "','" + due + "','" + pdate + "','" + image + "','" + contents + "','" + farmer_id + "','0','0')");
-    	rs = pstmt.executeQuery();
-        
-       
-        } else {
-            // DB에 내가적은 정보가 없다면 경고창을 띄워준다
-            %> <script> alert("업로드 실패"); history.go(-1); </script> <%            
-        }
+    	pstmt.executeUpdate();
         
         
     }
 catch(SQLException e)
 {
 	out.print(e.getMessage());
-}
-finally{
-	if(rs!=null)try{rs.close();}catch(SQLException ex){}
-	if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-	if(conn!=null)try{conn.close();}catch(SQLException ex){}
 }
     %>
 <script language=javascript>
