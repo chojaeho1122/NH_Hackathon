@@ -172,8 +172,8 @@ table.upload td {
       <li><a href="#"></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href='#'><span class="glyphicon glyphicon-user"></span>정보수정 </a></li>
+      <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
     </ul>
   </div>
 </nav>
@@ -185,15 +185,8 @@ table.upload td {
       <th align="center">투자한 상품</th>
       <th><%  out.print(" ");out.print(s_id+"님이 투자한 상품");%></th>
      </tr>
-    <tr>
-      <th align="center">카테고리</th>
-      <td>
-      <select name="category">
-      <option value="">category</option>
-      <option value="채소">채소</option>
-      <option value="과일">과일</option>
-      <option value="곡물">곡물</option>
-</select></td>
+     <tr>
+    
      </tr>
     <tr>
       <th align="center">무게(kg)</th>
@@ -251,7 +244,7 @@ table.upload td {
     <!-- Menu Toggle Script -->
     <script>
 
-    $("#wrapper").toggleClass("toggled");
+    $("#wrapper").toggleClass("toggled");//사이드바 자동으로 나오게
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
