@@ -47,7 +47,7 @@
    	      String name = (String)files.nextElement();
          String fileName = multi.getFilesystemName(name);
          String now = pdate;  //현재시간
-
+ 
          int i = -1;
          i = fileName.lastIndexOf("."); // 파일 확장자 위치
          String realFileName = now + fileName.substring(i, fileName.length());  //현재시간과 확장자 합치기
