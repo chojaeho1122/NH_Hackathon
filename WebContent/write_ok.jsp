@@ -58,12 +58,12 @@
    		 oldFile.renameTo(newFile); // 파일명 변경
         }*/
    
-         /*while(files.hasMoreElements()){
+         //while(files.hasMoreElements()){
    	      String name = (String)files.nextElement();//파라메터이름을 가져온뒤
-   	      //String filename = multi.getFilesystemName(name);//이름을 이용해 저장된 파일이름을 가져온다.
-   	      String filename = multi.getOriginalFileName(name);
-   	      out.println("저장된 파일 이름 : " + filename +"<br>");
-         }*/
+   	      String filename = multi.getFilesystemName(name);//이름을 이용해 저장된 파일이름을 가져온다.
+          out.println("저장된 파일 이름 : " + filename +"<br>");
+   	      out.println("저장된 파일 경로 : " + realFolder +"<br>");
+         //}
          
         // insert
         Class.forName("org.gjt.mm.mysql.Driver");
@@ -77,7 +77,7 @@
     	pstmt.setString(4, price);
     	pstmt.setString(5, due);
     	pstmt.setString(6, pdate);
-    	pstmt.setString(7, image);
+    	pstmt.setString(7, filename);
     	pstmt.setString(8, contents);
     	pstmt.setString(9, farmer_id);
     	pstmt.executeUpdate();
@@ -90,9 +90,9 @@ catch(SQLException e)
 	out.print(e.getMessage());
 }
     %>
-<script language=javascript>
+<!-- <script language=javascript>
 
    self.window.alert("업로드 성공");
    location.href="main.jsp"; 
 
-</script>
+</script> -->
