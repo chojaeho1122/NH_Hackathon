@@ -73,7 +73,6 @@ table.upload td {
 
 </style>
 <body>
-
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -85,7 +84,7 @@ table.upload td {
 					-moz-border-radius: 70px;
 					-khtml-border-radius: 70px;
 					-webkit-border-radius: 70px;"
-					 src="http://localhost:8080/hakaton/imageResponse.jsp" alt="로딩" width=100 height="100"/>
+					 src="http://localhost:8080/hakaton/imageResponse.jsp" alt="로딩" width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
    				</li>
                 <li>
                 <aa>
@@ -160,13 +159,31 @@ table.upload td {
         </div>
         <!-- /#page-content-wrapper -->
 	<center>
-	<h1>Upload Your Product</h1>
+	<h1>My PAGE</h1>
+	</center>
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">  </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#"></a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+	
 	<br><br>
 <form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data">
    <table class="upload" frame="void">
      <tr>
-      <th align="center">상품명</th>
-      <td><input name="pname" size="50" maxlength="100"></td>
+      <th align="center">투자한 상품</th>
+      <th><%  out.print(" ");out.print(s_id+"님이 투자한 상품");%></th>
      </tr>
     <tr>
       <th align="center">카테고리</th>
@@ -233,6 +250,8 @@ table.upload td {
 
     <!-- Menu Toggle Script -->
     <script>
+
+    $("#wrapper").toggleClass("toggled");
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
