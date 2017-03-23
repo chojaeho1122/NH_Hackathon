@@ -127,28 +127,42 @@ outline: 0;
    <h1>농산물 구경하기</h1>
    </center>
     </div>
+    <center><br><br>
     <!-- /#wrapper -->
 <%
+String realFolder = "";
+String saveFolder = "upload";
+ServletContext context = getServletContext();
+realFolder = context.getRealPath(saveFolder);
 		try
                     {
                        Class.forName("org.gjt.mm.mysql.Driver");
                        conn=DriverManager.getConnection(URL,USER,PASS);
                        pstmt=conn.prepareStatement("SELECT * FROM PRODUCT ORDER BY IDX DESC;");
                        rs = pstmt.executeQuery();
-                       while(rs.next())
-                       {
-                          String pname = rs.getString("PNAME");
-                          String weight = rs.getString("WEIGHT");
-                          String price = rs.getString("PRICE");
-                          String image = rs.getString("IMAGE");
-                          String contents = rs.getString("CONTENTS");
-                          String farmer_id = rs.getString("FARMER_ID");
-                          out.print("상품명 : "+pname+"<br>");
-                          out.print("무게 : "+weight+"<br>");
-                          out.print("가격 : "+price+"<br>");
-                          out.print("IMAGE : "+price+"<br>");
-                          
-                       }
+                       while(rs.next()){
+   						String pname = rs.getString(2);
+   						String weight = rs.getString(4);
+   						String price = rs.getString(5);
+   						String image = rs.getString(8);
+   						String contents = rs.getString(9);
+   						String farmer_id = rs.getString(10);
+   						
+   						String imagePath = realFolder + "\\" + image;
+   						%>
+   						<table>
+						<tr>&nbsp;</tr>
+						<tr><img src=<%=imagePath %>></tr>
+						<tr><%=pname %></tr>
+						<tr><%=weight %></tr>
+						<tr><%=price %></tr>
+						<tr><%=contents %></tr>
+						<tr><%=farmer_id %></tr>
+						<tr>&nbsp;</tr>
+						</table>
+   						<%
+
+                    	}
                     }
                     catch(SQLException e)
                     {
@@ -160,6 +174,7 @@ outline: 0;
                        if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
 %>
+</center>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
