@@ -1,5 +1,5 @@
 <%@ page contentType = "text/html; charset=utf-8" %>
-<%@ page import = "java.sql.*" %>
+<%@ page import = "java.sql.*,java.io.*,java.util.zip.*" %>
 <%
 String URL = "jdbc:mysql://localhost/hakathon";
 String USER =  "root";
@@ -44,6 +44,27 @@ outline: 0;
 .btn:active {
 border: 0;
 outline: 0;
+
+}
+
+table.upload {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    margin: 0px 0px 0px 200px;
+    border-bottom: none;
+}
+table.upload th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: none;
+}
+table.upload td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
 }
 
  a:link { color: none;; text-decoration: none;}
@@ -58,8 +79,17 @@ outline: 0;
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
+   				<li>
+   				<img style="
+					border-radius: 70px;
+					-moz-border-radius: 70px;
+					-khtml-border-radius: 70px;
+					-webkit-border-radius: 70px;"
+					 src="http://localhost:8080/hakaton/imageResponse.jsp" alt="로딩" width=100 height="100"/>
+   				</li>
                 <li>
-                    <%
+                <aa>
+                  	<%
                     String s_id=null;
                     if(session.getAttribute("s_id")==null){
                     	response.sendRedirect("login.jsp");
@@ -68,6 +98,12 @@ outline: 0;
                     }
                     out.print(" ");
                     out.print(s_id+"님");
+                    %>
+                </aa>
+                </li>
+                <li>
+                <aa>    
+                    <%
                     try
                     {
                     	Class.forName("org.gjt.mm.mysql.Driver");
@@ -91,6 +127,9 @@ outline: 0;
                     	if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
                     %>
+                </aa>
+                </li>
+                <li>    
                 <a href='logout.jsp'>logout</a><br><br>
                 </li>
                 <li>
@@ -121,8 +160,68 @@ outline: 0;
         </div>
         <!-- /#page-content-wrapper -->
 	<center>
-	<h1>mypage</h1>
+	<h1>Upload Your Product</h1>
+	<br><br>
+<form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data">
+   <table class="upload" frame="void">
+     <tr>
+      <th align="center">상품명</th>
+      <td><input name="pname" size="50" maxlength="100"></td>
+     </tr>
+    <tr>
+      <th align="center">카테고리</th>
+      <td>
+      <select name="category">
+      <option value="">category</option>
+      <option value="채소">채소</option>
+      <option value="과일">과일</option>
+      <option value="곡물">곡물</option>
+</select></td>
+     </tr>
+    <tr>
+      <th align="center">무게(kg)</th>
+      <td><input name="weight" size="20" maxlength="30"></td>
+     </tr>
+    <tr>
+      <th align="center">가격</th>
+      <td><input name="price" size="20" maxlength="30"></td>
+     </tr>
+     <tr>
+      <th align="center">상품판매기한</th>
+      <td>
+<select name="due">
+      <option value="">판매기한</option>
+      <option value="1">1일</option>
+      <option value="2">2일</option>
+      <option value="3">3일</option>
+      <option value="4">4일</option>
+      <option value="5">5일</option>
+      <option value="6">6일</option>
+      <option value="7">7일</option>
+</select>
+</td>
+     </tr>
+    <tr>
+      <th align="center">상품 사진</th>
+      <td><input name="image" type="file" size="40" maxlength="30"></td>
+     </tr>
+     <tr>
+      <th align="center">상품 설명</th>
+      <td><textarea name="contents" cols="70" rows="13"></textarea></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr align="center">
+      <td>&nbsp;</td>
+      <td colspan="2"><input class=button type=submit value="등록">
+       <input class=button type=button value="취소" OnClick="javascript:history.back(-1)">
+      <td>&nbsp;</td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+  </form>
 	</center>
+
     </div>
     <!-- /#wrapper -->
 
@@ -138,6 +237,7 @@ outline: 0;
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
     </script>
 
 </body>
