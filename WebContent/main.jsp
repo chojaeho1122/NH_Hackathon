@@ -58,6 +58,14 @@ outline: 0;
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                 <li>
+   				<img style="
+					border-radius: 70px;
+					-moz-border-radius: 70px;
+					-khtml-border-radius: 70px;
+					-webkit-border-radius: 70px;"
+					 src="http://localhost:8080/hakaton/imageResponse.jsp" alt="로딩" width=100 height="100"/>
+   				</li>
+                <li><aa>
                     <%
                     String s_id=null;
                     if(session.getAttribute("s_id")==null){
@@ -67,6 +75,13 @@ outline: 0;
                     }
                     out.print(" ");
                     out.print(s_id+"님");
+                    %>
+                    </aa>
+                    </li>
+                    
+                    <li>
+                    <aa>
+                    <%
                     try
                     {
                     	Class.forName("org.gjt.mm.mysql.Driver");
@@ -90,6 +105,8 @@ outline: 0;
                     	if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
                     %>
+                    </aa></li>
+                    <li>
                 <a href='logout.jsp'>logout</a><br><br>
                 </li>
                 <li>

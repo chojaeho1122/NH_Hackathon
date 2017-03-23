@@ -28,21 +28,45 @@
     	rs = pstmt.executeQuery();
         
         // isLogin 은 로그인 확인 유무를 위한 변수
-        Boolean isLogin = false;
+        Boolean isUserLogin = false;
         while(rs.next()) {
             // rs.next가 true 라면 = 정보가 있다
-            isLogin = true;
+            isUserLogin = true;
         }
         
         // DB에 내가 적은 정보가 있다면
-        if(isLogin) {
+        if(isUserLogin) {
+        	String role = "user";
             // 지금 로그인할 id와 pw를 session에 저장하고
             session.setAttribute("s_id", id);
+            session.setAttribute("role", role);
             // 첫 페이지로 돌려보낸다
             response.sendRedirect("main.jsp");    
-        } else {
+        } if else{//user table에 없으면 farmer table에서 검사
+        	pstmt=conn.prepareStatement("SELECT * FROM FARMER WHERE ID='" + id + "' AND PWD='" + pwd + "'");
+        	rs = pstmt.executeQuery();
+        	
+        	Boolean isFarmerLogin = false;
+            while(rs.next()) {
+                // rs.next가 true 라면 = 정보가 있다
+                isFarmerLogin = true;
+            }
+        	
+        	if(isFarmerLogin) {
+                // 지금 로그인할 id와 pw를 session에 저장하고
+                String role = "farmer";
+                session.setAttribute("s_id", id);
+                session.setAttribute("role", role);
+                // 첫 페이지로 돌려보낸다
+                response.sendRedirect("main.jsp");
+        	} else{
+                // DB에 내가적은 정보가 없다면 경고창을 띄워준다
+                %> <script> alert("로그인 실패"); history.go(-1); </script> <%      
+            }
+        	//farmer login
+        } else{
             // DB에 내가적은 정보가 없다면 경고창을 띄워준다
-            %> <script> alert("로그인 실패"); history.go(-1); </script> <%            
+            %> <script> alert("로그인 실패"); history.go(-1); </script> <%      
         }
         
         

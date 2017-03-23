@@ -90,9 +90,9 @@ catch(SQLException e)
 	out.print(e.getMessage());
 }
     %>
-<!-- <script language=javascript>
+<script language=javascript>
 
    self.window.alert("업로드 성공");
    location.href="main.jsp"; 
 
-</script> -->
+</script>
