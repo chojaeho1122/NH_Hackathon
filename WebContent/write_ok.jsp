@@ -61,7 +61,7 @@
          //while(files.hasMoreElements()){
    	      String name = (String)files.nextElement();//파라메터이름을 가져온뒤
    	      String filename = multi.getFilesystemName(name);//이름을 이용해 저장된 파일이름을 가져온다.
-          out.println("저장된 파일 이름 : " + filename +"<br>");
+          //out.println("저장된 파일 이름 : " + filename +"<br>");
    	      out.println("저장된 파일 경로 : " + realFolder +"<br>");
          //}
          
@@ -90,9 +90,9 @@ catch(SQLException e)
 	out.print(e.getMessage());
 }
     %>
-<script language=javascript>
+<!--<script language=javascript>
 
    self.window.alert("업로드 성공");
    location.href="main.jsp"; 
 
-</script>
+</script>-->

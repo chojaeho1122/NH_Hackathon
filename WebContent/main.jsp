@@ -1,4 +1,4 @@
-<%@ page contentType = "text/html; charset=utf-8" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import = "java.sql.*" %>
 <%
 String URL = "jdbc:mysql://localhost/hakathon";
@@ -58,55 +58,41 @@ outline: 0;
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                 <li>
-   				<img style="
-					border-radius: 70px;
-					-moz-border-radius: 70px;
-					-khtml-border-radius: 70px;
-					-webkit-border-radius: 70px;"
-					 src="http://localhost:8080/hakaton/imageResponse.jsp" alt="Î°úÎî©" width=100 height="100"/>
-   				</li>
-                <li><aa>
                     <%
                     String s_id=null;
+                    String role=null; /* farmer user */
                     if(session.getAttribute("s_id")==null){
-                    	response.sendRedirect("login.jsp");
+                       response.sendRedirect("login.jsp");
                     }else{
-                    	s_id=(String)session.getAttribute("s_id");
+                       s_id=(String)session.getAttribute("s_id");
+                       role=(String)session.getAttribute("role"); /* farmer user */
+                       System.out.print(role);
                     }
                     out.print(" ");
-                    out.print(s_id+"Îãò");
-                    %>
-                    </aa>
-                    </li>
-                    
-                    <li>
-                    <aa>
-                    <%
+                    out.print(s_id+"¥‘");
                     try
                     {
-                    	Class.forName("org.gjt.mm.mysql.Driver");
-                    	conn=DriverManager.getConnection(URL,USER,PASS);
-                    	pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
-                    	rs = pstmt.executeQuery();
-                    	while(rs.next())
-                    	{
-                    		String coin = rs.getString("COIN");
-                    		out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"Ïõê");
-                    		
-                    	}
+                       Class.forName("org.gjt.mm.mysql.Driver");
+                       conn=DriverManager.getConnection(URL,USER,PASS);
+                       pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
+                       rs = pstmt.executeQuery();
+                       while(rs.next())
+                       {
+                          String coin = rs.getString("COIN");
+                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"ø¯");
+                          
+                       }
                     }
                     catch(SQLException e)
                     {
-                    	out.print(e.getMessage());
+                       out.print(e.getMessage());
                     }
                     finally{
-                    	if(rs!=null)try{rs.close();}catch(SQLException ex){}
-                    	if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-                    	if(conn!=null)try{conn.close();}catch(SQLException ex){}
+                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
+                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
                     %>
-                    </aa></li>
-                    <li>
                 <a href='logout.jsp'>logout</a><br><br>
                 </li>
                 <li>
@@ -137,12 +123,43 @@ outline: 0;
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-	<center>
-	<h1>main</h1>
-	</center>
+   <center>
+   <h1>≥ÛªÍπ∞ ±∏∞Ê«œ±‚</h1>
+   </center>
     </div>
     <!-- /#wrapper -->
-
+<%
+		try
+                    {
+                       Class.forName("org.gjt.mm.mysql.Driver");
+                       conn=DriverManager.getConnection(URL,USER,PASS);
+                       pstmt=conn.prepareStatement("SELECT * FROM PRODUCT ORDER BY IDX DESC;");
+                       rs = pstmt.executeQuery();
+                       while(rs.next())
+                       {
+                          String pname = rs.getString("PNAME");
+                          String weight = rs.getString("WEIGHT");
+                          String price = rs.getString("PRICE");
+                          String image = rs.getString("IMAGE");
+                          String contents = rs.getString("CONTENTS");
+                          String farmer_id = rs.getString("FARMER_ID");
+                          out.print("ªÛ«∞∏Ì : "+pname+"<br>");
+                          out.print("π´∞‘ : "+weight+"<br>");
+                          out.print("∞°∞› : "+price+"<br>");
+                          out.print("IMAGE : "+price+"<br>");
+                          
+                       }
+                    }
+                    catch(SQLException e)
+                    {
+                       out.print(e.getMessage());
+                    }
+                    finally{
+                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
+                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
+                    }
+%>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
