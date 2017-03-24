@@ -273,7 +273,7 @@ realFolder = context.getRealPath(saveFolder);
    						String imagePath = realFolder + "\\" + image;
    						%>
    						<div class="pic pic-3d">
-                		<img src=<%=imagePath %> class="pic-image" alt="Pic">
+                		<a href="buyProc.jsp"><img src=<%=imagePath %> class="pic-image" alt="Pic"></a>
                 		<span class="pic-caption open-left">
 		        		<h1 class="pic-title"><%=pname %></h1>
 		        		<p>
