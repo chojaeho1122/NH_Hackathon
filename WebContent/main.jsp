@@ -89,7 +89,7 @@ outline: 0;
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(100, 102, 97, 0.41);
+    background: rgba(255, 255, 255, 0.41);
     padding: 10px;
     text-align: center;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
