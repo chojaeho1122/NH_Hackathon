@@ -151,13 +151,13 @@ realFolder = context.getRealPath(saveFolder);
    						String imagePath = realFolder + "\\" + image;
    						%>
    						<table>
-						<tr><img src=<%=imagePath %>></tr>
-						<tr><%=pname %></tr>
-						<tr><%=weight %></tr>
-						<tr><%=price %></tr>
-						<tr><%=contents %></tr>
-						<tr><%=farmer_id %></tr>
-						</table>
+						<tr><td colspan="2"><img src=<%=imagePath %> width=170 height=200></td></tr>
+						<tr><td width="80">상품명</td><td><%=pname %></td></tr>
+						<tr><td width="80">무게</td><td><%=weight %>kg</td></tr>
+						<tr><td width="80">가격</td><td><%=price %>원</td></tr>
+						<tr><td width="80">게시자</td><td><%=farmer_id %></td></tr>
+						<tr><td width="80">설명</td><td><%=contents %></td></tr>
+						</table><br>
    						<%
 
                     	}
