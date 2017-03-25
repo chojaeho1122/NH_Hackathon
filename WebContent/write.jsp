@@ -60,6 +60,7 @@ table.upload th {
     padding: 10px;
     font-weight: bold;
     border-bottom: none;
+    color:#BDBDBD;
 }
 table.upload td {
     width: 350px;
@@ -71,48 +72,103 @@ table.upload td {
  a:visited { color: none; text-decoration: none;}
  a:hover { color: none; text-decoration: none;}
 
-</style>
-<body>
+input {
+  border: 1px solid #bcbcbc;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.file_input label {
+    position:relative;
+    cursor:pointer;
+    display:inline-block;
+    vertical-align:middle;
+    overflow:hidden;
+    width:100px;
+    height:30px;
+    background:#777;
+    color:#fff;
+    text-align:center;
+    line-height:30px;
+}
+.file_input label input {
+    position:absolute;
+    width:0;
+    height:0;
+    overflow:hidden;
+}
+.file_input input[type=text] {
+    vertical-align:middle;
+    display:inline-block;
+    width:400px;
+    height:28px;
+    line-height:28px;
+    font-size:11px;
+    padding:0;
+    border:0;
+    border:1px solid #777;
+}
 
+</style>
+
+<body style="margin-top:-10px;">
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
+                 <li class="sidebar-brand">
+               <li>
+               <img style="
+               border-radius: 70px;
+               -moz-border-radius: 70px;
+               -khtml-border-radius: 70px;
+               -webkit-border-radius: 70px;"
+                src="images/profile/farmer.png"width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
+               </li>
                 <li>
-                    <%
+                <aa>
+                     <%
                     String s_id=null;
+                    String role=null; /* farmer user */
                     if(session.getAttribute("s_id")==null){
-                    	response.sendRedirect("login.jsp");
+                       response.sendRedirect("login.jsp");
                     }else{
-                    	s_id=(String)session.getAttribute("s_id");
+                       s_id=(String)session.getAttribute("s_id");
+                       role=(String)session.getAttribute("role"); /* farmer user */
+                       System.out.print(role);
                     }
                     out.print(" ");
                     out.print(s_id+"님");
-                    try
+                    /*try
                     {
-                    	Class.forName("org.gjt.mm.mysql.Driver");
-                    	conn=DriverManager.getConnection(URL,USER,PASS);
-                    	pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
-                    	rs = pstmt.executeQuery();
-                    	while(rs.next())
-                    	{
-                    		String coin = rs.getString("COIN");
-                    		out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
-                    		
-                    	}
+                       Class.forName("org.gjt.mm.mysql.Driver");
+                       conn=DriverManager.getConnection(URL,USER,PASS);
+                       pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
+                       rs = pstmt.executeQuery();
+                       while(rs.next())
+                       {
+                          String coin = rs.getString("COIN");
+                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
+                          
+                       }
                     }
                     catch(SQLException e)
                     {
-                    	out.print(e.getMessage());
+                       out.print(e.getMessage());
                     }
                     finally{
-                    	if(rs!=null)try{rs.close();}catch(SQLException ex){}
-                    	if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-                    	if(conn!=null)try{conn.close();}catch(SQLException ex){}
-                    }
+                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
+                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
+                    }*/
                     %>
-                <a href='logout.jsp'>logout</a><br><br>
+                </aa>
+                </li>
+                <li>&nbsp;
                 </li>
                 <li>
                     <a href="mypage.jsp">Mypage</a>
@@ -131,25 +187,17 @@ table.upload td {
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-                        </div>
-                </div>
-            </div>
-        </div>
+       
         <!-- /#page-content-wrapper -->
-	<center>
-	<h1>Upload Your Product</h1>
-	<br><br>
+   <center><br><br><br>
+   <h1>Upload Your Product</h1>
+   <br><br>
 <form name="writeform" method="post" action="write_ok.jsp" enctype="multipart/form-data">
   <tr>
    <td>
    <table class="upload" frame="void">
      <tr>
-      <th align="center">상품명</th>
+      <th align="center" width="50">상품명</th>
       <td><input name="pname" size="50" maxlength="100"></td>
      </tr>
     <tr>
@@ -183,9 +231,11 @@ table.upload td {
       <option value="6">6일</option>
 </select></td>
      </tr>
-    <tr>
-      <th align="center">상품 사진</th>
-      <td><input name="image" type="file" size="40" maxlength="30"></td>
+    <tr><td>&nbsp;</td>
+    <td><div class="file_input">
+    <label>상품사진
+        <input name="image" type="file" size="40" maxlength="30">
+    </label></div></td>
      </tr>
      <tr>
       <th align="center">상품 설명</th>
@@ -202,7 +252,8 @@ table.upload td {
    </td>
   </tr>
   </form>
-	</center>
+   </center>
+ 
 
     </div>
     <!-- /#wrapper -->
@@ -215,6 +266,7 @@ table.upload td {
 
     <!-- Menu Toggle Script -->
     <script>
+    $("#wrapper").toggleClass("toggled");
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

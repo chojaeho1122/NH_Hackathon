@@ -8,6 +8,10 @@
 <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
 <style>
 #google{font-family: 'Sanchez', serif;}
+<style>
+		#slide { position:relative; width:600px; height:300px; overflow:hidden; }
+		#slide img{ position:absolute; top:0; left:0;}
+
 </style>
 
 <table id="google" border=0 width=800 cellspacing=100px>

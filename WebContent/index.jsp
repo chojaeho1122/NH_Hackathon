@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>welcome to nanuڸ</title>
+    <title>welcome to nanu美</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- font awesome -->
@@ -14,27 +14,19 @@
     <!-- Custom Style -->
     <link href="css/style.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-</head>
-<body>
-
+<body style="margin-top:40px;" onload="login.id.focus()">
 <table align=center>
 <tr>
-<td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td>
-<td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td>
-<td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td>
-<td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td>
 <td><img src="./images/logo.jpg" width=600 height=300></td></tr>
 </table>
 <table align=center>
 <tr>
-
    <td>
-    <body onload="login.id.focus()">
     <!-- <div class="container">
       <div class="row" >
         </div> -->
-        <div class="col-md-50">
-          <div class="login-box well">
+        <div>
+          <div>
         <form name="login" accept-charset="UTF-8" role="form" method="post" action="loginProc.jsp">
             <legend>login</legend>
             <div class="form-group">
@@ -66,9 +58,9 @@
   <script src="js/bootstrap.min.js"></script>
    
    
-   <TD> <jsp:include page="test_01.jsp"  flush="false"/></TD>
+   <TD> <jsp:include page="index_mid.jsp"  flush="false"/></TD>
    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-   <TD> <jsp:include page="test_view.jsp" flush="false"/></TD>
+   <TD> <jsp:include page="index_state.jsp" flush="false"/></TD>
 </tr>
 </table>
 

@@ -1,5 +1,5 @@
-<%@ page contentType = "text/html; charset=utf-8" %>
-<%@ page import = "java.sql.*,java.io.*,java.util.zip.*" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import = "java.sql.*" %>
 <%
 String URL = "jdbc:mysql://localhost/hakathon";
 String USER =  "root";
@@ -30,17 +30,6 @@ ResultSet rs=null;
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></scri.row>.containerpt>
     <![endif]-->
-<!-- 이부분부터는 갤러리를 위함 -->
- <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>Freebie: 4 Bootstrap Gallery Templates</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
-    <link rel="stylesheet" href="./css/gallery-grid.css"><!-- 이부분때문에 바디가 내려옴 -->
-<!-- 갤러리 부분 끝 -->
 
 </head>
 <style>
@@ -322,12 +311,12 @@ body {
     }
 }
 </style>
-<body style="margin-top:-70px;">
+<body style="margin-top:-10px;">
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
+                 <li class="sidebar-brand">
                <li>
                <img style="
                border-radius: 70px;
@@ -394,104 +383,93 @@ body {
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-      <!--  <div id="page-content-wrapper">
-               <div class="container-fluid">
-                   <div class="row">
-                         <div class="col-lg-12">
-                           <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-                         </div>   
-                  </div>
-              </div>                       
-            </div>--><!-- 주석처리 했음 -->
-        
+       
         <!-- /#page-content-wrapper -->
-   <!--<center>
-   <h1>My PAGE</h1>
-   </center>  -->
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">  </a>
-    </div>
-    <ul class="nav navbar-nav">
-    <li>
-          
-            <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-                         
-    </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href='#'><span class="glyphicon glyphicon-user"></span>정보수정 </a></li>
-      <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
-    </ul>
-  </div>
-</nav>
-   
-<form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data" style="margin-top:60px;">
-   
-      <!-- 갤러리 시작 -->
-     
-<div class="container gallery-container">
-
-    <h1>My Page</h1>
-
-    <p><%  out.print(s_id);out.print("님이 투자한 상품");%></p>
-    
-    <div class="tz-gallery">
-        <div class="row">
-            <div class="col-sm-4 col-md-4">
-                <a class="lightbox" href="../images/park.jpg">
-                    <img src="../images/park.jpg" alt="Park">
-                </a>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <a class="lightbox" href="../images/bridge.jpg">
-                    <img src="../images/bridge.jpg" alt="Bridge">
-                </a>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <a class="lightbox" href="../images/tunnel.jpg">
-                    <img src="../images/tunnel.jpg" alt="Tunnel">
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    <p class="page-description text-center">   <%  out.print(s_id);out.print("님의 기여도");%></p>
-    
-    <div class="tz-gallery">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <a class="lightbox" href="../images/park.jpg">
-                    <!-- 기여도 관련된 코딩이 들어가면 되는 부분 -->
-                </a>
-            </div>
-        </div>
-    </div>
-   <p class="page-description text-center">   <%  out.print(s_id);out.print("님의 당첨내역");%></p>
-    
-    <div class="tz-gallery">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <a class="lightbox" href="../images/park.jpg">
-                    <!-- 당첨내역 관련된 코딩이 들어가면 되는 부분 -->
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-<script>
-    baguetteBox.run('.tz-gallery');
-</script>
-     <!-- 갤러리 끝 -->
-  </form>
-   </center>
-
-    </div>
+   <center><br><br>
+   <h1>농산물 구경하기</h1>
+   <br><br>  
     <!-- /#wrapper -->
+<%
+String realFolder = "";
+String saveFolder = "upload";
+ServletContext context = getServletContext();
+realFolder = context.getRealPath(saveFolder);
+      try
+                    {
+                       Class.forName("org.gjt.mm.mysql.Driver");
+                       conn=DriverManager.getConnection(URL,USER,PASS);
+                       pstmt=conn.prepareStatement("SELECT * FROM PRODUCT ORDER BY IDX DESC;");
+                       rs = pstmt.executeQuery();
+                       while(rs.next()){
+                       String idx = rs.getString(1);
+                     String pname = rs.getString(2);
+                     String weight = rs.getString(4);
+                     String price = rs.getString(5);
+                     String image = rs.getString(8);
+                     String contents = rs.getString(9);
+                     String farmer_id = rs.getString(10);
+                     String count = rs.getString(11);
+                     String imagePath = realFolder + "\\" + image;
+                     %>
+                     <script>
+                     function check(){
+                    	 return confirm("결제가 진행됩니다.");
+       				}
+                     </script>
+                     <div class="pic pic-3d">
+                      <img src=<%=imagePath %> class="pic-image" alt="Pic">
+                      <span class="pic-caption open-left">
+                    <%
+                  if(role=="user"){
+                       out.print("<a href='buyProc.jsp?idx="+idx+"' onclick='return check();'><h1 class='pic-title'>"+pname+"</h1></a>");
+                    }else
+                    {
+                       out.print("<h1 class='pic-title'>"+pname+"</h1>");
+                    }%>
+                    
+                    <p>
+                    <table>
+                    <tr><td width="80">무게</td><td><%=weight %>kg</td></tr>
+                  <tr><td width="80">가격</td><td><%=price %>원</td></tr>
+                  <tr><td width="80">게시자</td><td><%=farmer_id %></td></tr>
+                  <tr><td width="80">설명</td><td><%=contents %></td></tr>
+                  <div class="zt-span6 last">
+                  <div class="zt-skill-bar"><div data-width="<%=count %>0" style="text-align:left">투자현황<span><%=count %>0%</span></div></div>
+                  </div>
+                  </table>
+                  </p></span>
+                     </div>
+                     
+                     <!--<table>
+                  <tr><td colspan="2"><img src=<%=imagePath %> width=170 height=200></td></tr>
+                  <tr><td width="80">상품명</td><td><%=pname %></td></tr>
+                  <tr><td width="80">무게</td><td><%=weight %>kg</td></tr>
+                  <tr><td width="80">가격</td><td><%=price %>원</td></tr>
+                  <tr><td width="80">게시자</td><td><%=farmer_id %></td></tr>
+                  <tr><td width="80">설명</td><td><%=contents %></td></tr>
+                  </table><br>-->
+                     <%
 
+                       }
+                    }
+                    catch(SQLException e)
+                    {
+                       out.print(e.getMessage());
+                    }
+                    finally{
+                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
+                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
+                    }
+%>
+</center>
+</div>
+<div id="footer" style="text-align:right">
+<%
+                    if(role=="farmer"){
+                       out.print("<a href='write.jsp'>write하기</a>");
+                    }
+%></div>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -500,15 +478,37 @@ body {
 
     <!-- Menu Toggle Script -->
     <script>
-
-    $("#wrapper").toggleClass("toggled");//사이드바 자동으로 나오게
+    $("#wrapper").toggleClass("toggled");
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    
+    (function( $ ) {
+        "use strict";
+        $(function() {
+            function animated_contents() {
+                $(".zt-skill-bar > div ").each(function (i) {
+                    var $this  = $(this),
+                        skills = $this.data('width');
 
+                    $this.css({'width' : skills + '%'});
+
+                });
+            }
+            
+            if(jQuery().appear) {
+                $('.zt-skill-bar').appear().on('appear', function() {
+                    animated_contents();
+                });
+            } else {
+                animated_contents();
+            }
+        });
+    }(jQuery));
+    
+    
     </script>
 
 </body>
-
 </html>

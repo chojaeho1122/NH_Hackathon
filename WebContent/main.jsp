@@ -311,7 +311,7 @@ body {
     }
 }
 </style>
-<body>
+<body style="margin-top:-70px;">
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -323,7 +323,7 @@ body {
                -moz-border-radius: 70px;
                -khtml-border-radius: 70px;
                -webkit-border-radius: 70px;"
-                src="http://localhost:8080/hakaton/imageResponse.jsp" alt="로딩" width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
+                src="images/profile/man.png" width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
                </li>
                 <li>
                 <aa>
@@ -339,28 +339,7 @@ body {
                     }
                     out.print(" ");
                     out.print(s_id+"님");
-                    try
-                    {
-                       Class.forName("org.gjt.mm.mysql.Driver");
-                       conn=DriverManager.getConnection(URL,USER,PASS);
-                       pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
-                       rs = pstmt.executeQuery();
-                       while(rs.next())
-                       {
-                          String coin = rs.getString("COIN");
-                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
-                          
-                       }
-                    }
-                    catch(SQLException e)
-                    {
-                       out.print(e.getMessage());
-                    }
-                    finally{
-                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
-                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
-                    }
+                    
                     %>
                 </aa>
                 </li>
@@ -383,13 +362,11 @@ body {
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        
+       
         <!-- /#page-content-wrapper -->
-   <center>
-   <br>
-   <br>
-   <h1>농산물 구경하기</h1><br><br>
-    
+   <center><br><br>
+   <h1>농산물 구경하기</h1>
+   <br><br>  
     <!-- /#wrapper -->
 <%
 String realFolder = "";
@@ -415,11 +392,11 @@ realFolder = context.getRealPath(saveFolder);
                      %>
                      <script>
                      function check(){
-                    	 return confirm("결제가 진 행됩니다.");
+                    	 return confirm("결제가 진행됩니다.");
        				}
                      </script>
                      <div class="pic pic-3d">
-                      <a href="buyProc.jsp"><img src=<%=imagePath %> class="pic-image" alt="Pic"></a>
+                      <img src=<%=imagePath %> class="pic-image" alt="Pic">
                       <span class="pic-caption open-left">
                     <%
                   if(role=="user"){
@@ -466,24 +443,6 @@ realFolder = context.getRealPath(saveFolder);
 %>
 </center>
 
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">  </a>
-    </div>
-    <ul class="nav navbar-nav">
-    <li>
-          
-            <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-                         
-    </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href='#'><span class="glyphicon glyphicon-user"></span>정보수정 </a></li>
-      <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
-    </ul>
-  </div>
-</nav>
 
 
 </div>
