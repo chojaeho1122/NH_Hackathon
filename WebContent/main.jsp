@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import = "java.sql.*" %>
 <%
 String URL = "jdbc:mysql://localhost/hakathon";
@@ -134,7 +134,7 @@ outline: 0;
     -o-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
     backface-visibility: hidden;
-	
+   
 
 }
 
@@ -244,15 +244,90 @@ a:hover,
     width:100%;
     height:50px;
 }
+
+body {
+    background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
+    min-height: 100vh;
+    font: normal 16px sans-serif;
+    padding: 60px 0;
+}
+
+.container.gallery-container {
+    background-color: #fff;
+    color: #35373a;
+    min-height: 100vh;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
+}
+
+.gallery-container h1 {
+    text-align: center;
+    margin-top: 70px;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+}
+
+.gallery-container p.page-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 25px auto;
+    color: #888;
+    font-size: 18px;
+}
+
+.tz-gallery {
+    padding: 40px;
+}
+
+.tz-gallery .lightbox img {
+    width: 100%;
+    margin-bottom: 30px;
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+
+.tz-gallery .lightbox img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.tz-gallery img {
+    border-radius: 4px;
+}
+
+.baguetteBox-button {
+    background-color: transparent !important;
+}
+
+
+@media(max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .container.gallery-container {
+        border-radius: 0;
+    }
+}
 </style>
 <body>
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
+                 <li class="sidebar-brand">
+               <li>
+               <img style="
+               border-radius: 70px;
+               -moz-border-radius: 70px;
+               -khtml-border-radius: 70px;
+               -webkit-border-radius: 70px;"
+                src="http://localhost:8080/hakaton/imageResponse.jsp" alt="ë¡œë”©" width=100 height="100"/><!-- imageResponseë¥¼ ë¶€ë¥´ê¸°ë§Œ í•˜ëŠ” ê²ƒ -->
+               </li>
                 <li>
-                    <%
+                <aa>
+                     <%
                     String s_id=null;
                     String role=null; /* farmer user */
                     if(session.getAttribute("s_id")==null){
@@ -263,7 +338,13 @@ a:hover,
                        System.out.print(role);
                     }
                     out.print(" ");
-                    out.print(s_id+"´Ô");
+                    out.print(s_id+"ë‹˜");
+                    %>
+                </aa>
+                </li>
+                <li>
+                <aa>    
+                    <%
                     try
                     {
                        Class.forName("org.gjt.mm.mysql.Driver");
@@ -273,7 +354,7 @@ a:hover,
                        while(rs.next())
                        {
                           String coin = rs.getString("COIN");
-                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"¿ø");
+                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"ì›");
                           
                        }
                     }
@@ -287,7 +368,7 @@ a:hover,
                        if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
                     %>
-                <a href='logout.jsp'>logout</a><br><br>
+                     </aa>
                 </li>
                 <li>
                     <a href="mypage.jsp">Mypage</a>
@@ -306,19 +387,12 @@ a:hover,
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                    <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-                        <!--<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><img src="images/menu.png" width="50" height="35"/></a>  -->
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <!-- /#page-content-wrapper -->
    <center>
-   <h1>³ó»ê¹° ±¸°æÇÏ±â</h1><br><br>
+   <br>
+   <br>
+   <h1>ë†ì‚°ë¬¼ êµ¬ê²½í•˜ê¸°</h1><br><br>
     
     <!-- /#wrapper -->
 <%
@@ -326,58 +400,58 @@ String realFolder = "";
 String saveFolder = "upload";
 ServletContext context = getServletContext();
 realFolder = context.getRealPath(saveFolder);
-		try
+      try
                     {
                        Class.forName("org.gjt.mm.mysql.Driver");
                        conn=DriverManager.getConnection(URL,USER,PASS);
                        pstmt=conn.prepareStatement("SELECT * FROM PRODUCT ORDER BY IDX DESC;");
                        rs = pstmt.executeQuery();
                        while(rs.next()){
-                    	String idx = rs.getString(1);
-   						String pname = rs.getString(2);
-   						String weight = rs.getString(4);
-   						String price = rs.getString(5);
-   						String image = rs.getString(8);
-   						String contents = rs.getString(9);
-   						String farmer_id = rs.getString(10);
-   						
-   						String imagePath = realFolder + "\\" + image;
-   						%>
-   						<div class="pic pic-3d">
-                		<a href="buyProc.jsp"><img src=<%=imagePath %> class="pic-image" alt="Pic"></a>
-                		<span class="pic-caption open-left">
-		        		<%
-						if(role=="user"){
-                       out.print("<a href='buyProc.jsp?idx="+idx+"' ><h1 class='pic-title'>"+pname+"</h1></a>");
+                       String idx = rs.getString(1);
+                     String pname = rs.getString(2);
+                     String weight = rs.getString(4);
+                     String price = rs.getString(5);
+                     String image = rs.getString(8);
+                     String contents = rs.getString(9);
+                     String farmer_id = rs.getString(10);
+                     String count = rs.getString(11);
+                     String imagePath = realFolder + "\\" + image;
+                     %>
+                     <div class="pic pic-3d">
+                      <a href="buyProc.jsp"><img src=<%=imagePath %> class="pic-image" alt="Pic"></a>
+                      <span class="pic-caption open-left">
+                    <%
+                  if(role=="user"){
+                       out.print("<a href='buyProc.jsp?idx="+idx+"'><h1 class='pic-title'>"+pname+"</h1></a>");
                     }else
                     {
-                    	out.print("<h1 class='pic-title'>"+pname+"</h1>");
+                       out.print("<h1 class='pic-title'>"+pname+"</h1>");
                     }%>
-		        		
-		        		<p>
-		        		<table>
-		        		<tr><td width="80">¹«°Ô</td><td><%=weight %>kg</td></tr>
-						<tr><td width="80">°¡°İ</td><td><%=price %>¿ø</td></tr>
-						<tr><td width="80">°Ô½ÃÀÚ</td><td><%=farmer_id %></td></tr>
-						<tr><td width="80">¼³¸í</td><td><%=contents %></td></tr>
-						<div class="zt-span6 last">
-						<div class="zt-skill-bar"><div data-width="88" style="">ÅõÀÚÇöÈ²<span>88%</span></div></div>
-						</div>
-						</table>
-						</p></span>
-            			</div>
-   						
-   						<!--<table>
-						<tr><td colspan="2"><img src=<%=imagePath %> width=170 height=200></td></tr>
-						<tr><td width="80">»óÇ°¸í</td><td><%=pname %></td></tr>
-						<tr><td width="80">¹«°Ô</td><td><%=weight %>kg</td></tr>
-						<tr><td width="80">°¡°İ</td><td><%=price %>¿ø</td></tr>
-						<tr><td width="80">°Ô½ÃÀÚ</td><td><%=farmer_id %></td></tr>
-						<tr><td width="80">¼³¸í</td><td><%=contents %></td></tr>
-						</table><br>-->
-   						<%
+                    
+                    <p>
+                    <table>
+                    <tr><td width="80">ë¬´ê²Œ</td><td><%=weight %>kg</td></tr>
+                  <tr><td width="80">ê°€ê²©</td><td><%=price %>ì›</td></tr>
+                  <tr><td width="80">ê²Œì‹œì</td><td><%=farmer_id %></td></tr>
+                  <tr><td width="80">ì„¤ëª…</td><td><%=contents %></td></tr>
+                  <div class="zt-span6 last">
+                  <div class="zt-skill-bar"><div data-width="<%=count %>0" style="text-align:left">íˆ¬ìí˜„í™©<span><%=count %>0%</span></div></div>
+                  </div>
+                  </table>
+                  </p></span>
+                     </div>
+                     
+                     <!--<table>
+                  <tr><td colspan="2"><img src=<%=imagePath %> width=170 height=200></td></tr>
+                  <tr><td width="80">ìƒí’ˆëª…</td><td><%=pname %></td></tr>
+                  <tr><td width="80">ë¬´ê²Œ</td><td><%=weight %>kg</td></tr>
+                  <tr><td width="80">ê°€ê²©</td><td><%=price %>ì›</td></tr>
+                  <tr><td width="80">ê²Œì‹œì</td><td><%=farmer_id %></td></tr>
+                  <tr><td width="80">ì„¤ëª…</td><td><%=contents %></td></tr>
+                  </table><br>-->
+                     <%
 
-                    	}
+                       }
                     }
                     catch(SQLException e)
                     {
@@ -389,11 +463,33 @@ realFolder = context.getRealPath(saveFolder);
                        if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
 %>
-</center></div>
+</center>
+
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">  </a>
+    </div>
+    <ul class="nav navbar-nav">
+    <li>
+          
+            <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
+                         
+    </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href='#'><span class="glyphicon glyphicon-user"></span>ì •ë³´ìˆ˜ì • </a></li>
+      <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+</div>
 <div id="footer" style="text-align:right">
 <%
                     if(role=="farmer"){
-                       out.print("<a href='write.jsp'>writeÇÏ±â</a>");
+                       out.print("<a href='write.jsp'>writeí•˜ê¸°</a>");
                     }
 %></div>
     <!-- jQuery -->
@@ -404,6 +500,7 @@ realFolder = context.getRealPath(saveFolder);
 
     <!-- Menu Toggle Script -->
     <script>
+    $("#wrapper").toggleClass("toggled");
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -434,5 +531,4 @@ realFolder = context.getRealPath(saveFolder);
     </script>
 
 </body>
-
 </html>
