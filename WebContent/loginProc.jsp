@@ -28,7 +28,7 @@
     	rs = pstmt.executeQuery();
         
         // isLogin 은 로그인 확인 유무를 위한 변수
-        Boolean isLogin = false;
+        boolean isLogin = false;
         while(rs.next()) {
             // rs.next가 true 라면 = 정보가 있다
             isLogin = true;
