@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ page import = "java.sql.*" %>
+<%@ page contentType = "text/html; charset=utf-8" %>
+<%@ page import = "java.sql.*,java.io.*,java.util.zip.*" %>
 <%
 String URL = "jdbc:mysql://localhost/hakathon";
 String USER =  "root";
@@ -43,12 +43,15 @@ ResultSet rs=null;
 <!-- 갤러리 부분 끝 -->
 
 </head>
-<style>
+<style> 
+
+
     .zt-skill-bar {
         color: #fff;
         font-size: 11px;
         line-height: 25px;
         height: 25px;
+        width: 320px;
         margin-bottom: 5px;
 
         background-color: rgba(0,0,0,0.1);
@@ -110,7 +113,8 @@ ResultSet rs=null;
             -ms-transform: rotate(45deg);
                 transform: rotate(45deg);
     }
-
+    
+    
 .btn{
 border: 0;
 outline: 0;
@@ -122,12 +126,32 @@ outline: 0;
 .btn:active {
 border: 0;
 outline: 0;
+
 }
 
- a:link { color: none;; text-decoration: none; color:#000;}
- a:visited { color: none; text-decoration: none; color:#000;}
- a:hover { color: none; text-decoration: none; color: #9FC93C;}
- 
+table.upload {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    margin: 0px 0px 0px 200px;
+    border-bottom: none;
+}
+table.upload th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: none;
+}
+table.upload td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+}
+
+ a:link { color: none;; text-decoration: none;}
+ a:visited { color: none; text-decoration: none;}
+ a:hover { color: none; text-decoration: none;}
 .pic {
     max-width: 300px;
     max-height: 200px;
@@ -255,88 +279,21 @@ a:hover,
     width:100%;
     height:50px;
 }
-
-body {
-    background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
-    min-height: 100vh;
-    font: normal 16px sans-serif;
-    padding: 60px 0;
-}
-
-.container.gallery-container {
-    background-color: #fff;
-    color: #35373a;
-    min-height: 100vh;
-    border-radius: 20px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
-}
-
-.gallery-container h1 {
-    text-align: center;
-    margin-top: 70px;
-    font-family: 'Droid Sans', sans-serif;
-    font-weight: bold;
-}
-
-.gallery-container p.page-description {
-    text-align: center;
-    max-width: 800px;
-    margin: 25px auto;
-    color: #888;
-    font-size: 18px;
-}
-
-.tz-gallery {
-    padding: 40px;
-}
-
-.tz-gallery .lightbox img {
-    width: 100%;
-    margin-bottom: 30px;
-    transition: 0.2s ease-in-out;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
-}
-
-
-.tz-gallery .lightbox img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-}
-
-.tz-gallery img {
-    border-radius: 4px;
-}
-
-.baguetteBox-button {
-    background-color: transparent !important;
-}
-
-
-@media(max-width: 768px) {
-    body {
-        padding: 0;
-    }
-
-    .container.gallery-container {
-        border-radius: 0;
-    }
-}
 </style>
 <body style="margin-top:-70px;">
     <div id="wrapper">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-
-   				<li>
-   				<img style="
-					border-radius: 70px;
-					-moz-border-radius: 70px;
-					-khtml-border-radius: 70px;
-					-webkit-border-radius: 70px;"
-					 src="http://localhost:8080/hakaton/imageResponse.jsp" alt="로딩" width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
-   				</li>
+                 <li class="sidebar-brand">
+               <li>
+               <img style="
+               border-radius: 70px;
+               -moz-border-radius: 70px;
+               -khtml-border-radius: 70px;
+               -webkit-border-radius: 70px;"
+                src="images/profile/man.png" width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
+               </li>
                 <li>
                 <aa>
                      <%
@@ -351,28 +308,7 @@ body {
                     }
                     out.print(" ");
                     out.print(s_id+"님");
-                    try
-                    {
-                       Class.forName("org.gjt.mm.mysql.Driver");
-                       conn=DriverManager.getConnection(URL,USER,PASS);
-                       pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
-                       rs = pstmt.executeQuery();
-                       while(rs.next())
-                       {
-                          String coin = rs.getString("COIN");
-                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
-                          
-                       }
-                    }
-                    catch(SQLException e)
-                    {
-                       out.print(e.getMessage());
-                    }
-                    finally{
-                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
-                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
-                    }
+                    
                     %>
                 </aa>
                 </li>
@@ -396,7 +332,6 @@ body {
 
         <!-- Page Content -->
       <!--  <div id="page-content-wrapper">
-
                <div class="container-fluid">
                    <div class="row">
                          <div class="col-lg-12">
@@ -410,78 +345,35 @@ body {
    <!--<center>
    <h1>My PAGE</h1>
    </center>  -->
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-     
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">  </a>
-    </div>
-    <ul class="nav navbar-nav">
-    <li>
-
-          
-            <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-            
-    </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href='#'><span class="glyphicon glyphicon-user"></span>정보수정 </a></li>
-      <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
-    </ul>
-  </div>
-</nav>
-<form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data" style="margin-top:60px;">
+    
+<form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data" style="margin-top:61px;">
    
       <!-- 갤러리 시작 -->
      
 <div class="container gallery-container">
 
-    <h1>My Page</h1>
-
-
-    <p><%  out.print(s_id);out.print("님이 투자한 상품");%></p>
-    
+   <br></br>
+    <h1 style="color:dark;text-align:center">Dani's Page</h1>
+       <br></br>
+    <h3 style="color:dark;text-align:left"> [투자가 완료된 상품] </h3><h4 style="color:#9f9f9f;text-align:left"> - 이미지를 클릭하면 추첨결과를 확인할 수 있습니다 </h4>
     <div class="tz-gallery">
-        <div class="row">
-            <div class="col-sm-4 col-md-4">
-                <a class="lightbox" href="../images/park.jpg">
-                    <img src="../images/park.jpg" alt="Park">
-                </a>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <a class="lightbox" href="../images/bridge.jpg">
-                    <img src="../images/bridge.jpg" alt="Bridge">
-                </a>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <a class="lightbox" href="../images/tunnel.jpg">
-                    <img src="../images/tunnel.jpg" alt="Tunnel">
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    <p class="page-description text-center">   <%  out.print(s_id);out.print("님의 기여도");%></p>
-  
-    <div class="tz-gallery">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <a class="lightbox" href="../images/park.jpg">
-                    <!-- 기여도 관련된 코딩이 들어가면 되는 부분 -->
-                </a>
-            </div>
-        </div>
-    </div>
-   <p class="page-description text-center">   <%  out.print(s_id);out.print("님의 당첨내역");%></p>
-    
-    <div class="tz-gallery">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <a class="lightbox" href="../images/park.jpg">
-                    <!-- 당첨내역 관련된 코딩이 들어가면 되는 부분 -->
-                </a>
-            </div>
-        </div>
+       <div>
+                    <img src="images/1.jpg" id="img1"  width="320" height="320"alt="Park" > 
+                  <div class="zt-span6 last">
+                       <div class="zt-skill-bar">
+                           <div data-width="100" style="text-align:left">투자현황
+                              <span>100%</span>
+                           </div>
+                       </div>
+                    </div>
+                     
+                    
+                    <br></br>
+    <h3 style="color:dark;text-align:left"> [내가 투자한 상품들] </h3>
+                    <img src="images/2.jpg" id="img2"  width="320" height="320" alt="Park"style="margin-left:11px;" >  
+                    <img src="images/3.jpg"  id="img3"width="320" height="320"alt="Park" style="margin-left:11px;"> 
+                    <img src="images/4.jpg" width="320" height="320"style="margin-left:11px;">
+             </div>
     </div>
 </div>
 
@@ -506,11 +398,39 @@ body {
     <script>
 
     $("#wrapper").toggleClass("toggled");//사이드바 자동으로 나오게
+     
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    $("#img1").click(function(e) {
+        e.preventDefault();
+        alert("추첨결과 확인하기!"); 
+        location.href("lotProc2.jsp");
+    });
+    (function( $ ) {
+        "use strict";
+        $(function() {
+            function animated_contents() {
+                $(".zt-skill-bar > div ").each(function (i) {
+                    var $this  = $(this),
+                        skills = $this.data('width');
 
+                    $this.css({'width' : skills + '%'});
+
+                });
+            }
+            
+            if(jQuery().appear) {
+                $('.zt-skill-bar').appear().on('appear', function() {
+                    animated_contents();
+                });
+            } else {
+                animated_contents();
+            }
+        });
+    }(jQuery));
+    
     </script>
 
 </body>

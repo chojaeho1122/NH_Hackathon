@@ -127,7 +127,7 @@ input {
                -moz-border-radius: 70px;
                -khtml-border-radius: 70px;
                -webkit-border-radius: 70px;"
-                src="images/profile/farmer.png"width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
+                src="images/profile/man.png"width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
                </li>
                 <li>
                 <aa>
@@ -191,68 +191,12 @@ input {
        
         <!-- /#page-content-wrapper -->
    <center><br><br><br>
-   <h1>Upload Your Product</h1>
+   <h1>Thanks for your doantion!</h1>
    <br><br>
-<form name="writeform" method="post" action="write_ok.jsp" enctype="multipart/form-data">
-  <tr>
-   <td>
-   <table class="upload" frame="void">
-     <tr>
-      <th align="center" width="50">상품명</th>
-      <td><input name="pname" size="50" maxlength="100"></td>
-     </tr>
-    <tr>
-      <th align="center">카테고리</th>
-      <td>
-      <select name="category">
-      <option value="">category</option>
-      <option value="채소">채소</option>
-      <option value="과일">과일</option>
-      <option value="곡물">곡물</option>
-</select></td>
-     </tr>
-    <tr>
-      <th align="center">무게(kg)</th>
-      <td><input name="weight" size="20" maxlength="30"></td>
-     </tr>
-    <tr>
-      <th align="center">가격</th>
-      <td><input name="price" size="20" maxlength="30"></td>
-     </tr>
-     <tr>
-      <th align="center">상품판매기한</th>
-      <td>
-      <select name="due">
-      <option value="">판매기한</option>
-      <option value="1">1일</option>
-      <option value="2">2일</option>
-      <option value="3">3일</option>
-      <option value="4">4일</option>
-      <option value="5">5일</option>
-      <option value="6">6일</option>
-</select></td>
-     </tr>
-    <tr><td>&nbsp;</td>
-    <td><div class="file_input">
-    <label>상품사진
-        <input name="image" type="file" size="40" maxlength="30">
-    </label></div></td>
-     </tr>
-     <tr>
-      <th align="center">상품 설명</th>
-      <td><textarea name="contents" cols="70" rows="13"></textarea></td>
-      <td>&nbsp;</td>
-     </tr>
-     <tr align="center">
-      <td>&nbsp;</td>
-      <td colspan="2"><input class=button type=submit value="등록">
-       <input class=button type=button value="취소" OnClick="javascript:history.back(-1)">
-      <td>&nbsp;</td>
-     </tr>
-    </table>
-   </td>
-  </tr>
-  </form>
+<p>당첨에는 실패했지만, 소중한 500원이 <img src="images/1.PNG" width="170" height="50">에 기부되었습니다. </p>
+<br>
+<a href='http://jikigi.nonghyup.com/user/indexMain.do?siteId=jikigi'><img src="images/기부.PNG" width="700" height="430"></a>
+
    </center>
  
 
@@ -274,7 +218,9 @@ input {
     });
 
     </script>
-
+<footer>
+<br><br>
+</footer>
 </body>
 
 </html>

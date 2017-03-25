@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,18 +15,14 @@
     <link href="css/style.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <body style="margin-top:40px;" onload="login.id.focus()">
-<table align=center>
-<tr>
-<td><img src="./images/logo.jpg" width=600 height=300></td></tr>
-</table>
-<table align=center>
-<tr>
-   <td>
-    <!-- <div class="container">
-      <div class="row" >
-        </div> -->
-        <div>
-          <div>
+<div>
+<div class="col-sm-3 col-md-3">
+	<div>
+	<div class="col-sm-12 col-md-12"><br><br><br><br><br><br><br> </div>
+	</div>
+	<div>
+	<div class="col-sm-1 col-md-1"></div>
+	<div class="col-sm-10 col-md-10">
         <form name="login" accept-charset="UTF-8" role="form" method="post" action="loginProc.jsp">
             <legend>login</legend>
             <div class="form-group">
@@ -46,23 +42,45 @@
                 <a href="signUp.jsp" class="btn btn-default btn-block m-t-md">Sign Up</a>
             </div>
         </form>
-          </div>
-        </div>
-      </div>
-    </div>
- </td>
- <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ 	</div>
+	<div class="col-sm-1 col-md-1"></div>
+	</div>
+</div>
+<div class="col-sm-6 col-md-6">
+	<div>
+		<div class="col-sm-2 col-md-2"></div>
+		<div class="col-sm-10 col-md-10">
+			<img src="./images/logo.jpg" width=600 height=300>
+		</div>
+	</div>
+<div>
+
+<div> 
+	<div class="col-sm-8 col-md-8">
+ 
+ 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
    
    
-   <TD> <jsp:include page="index_mid.jsp"  flush="false"/></TD>
-   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-   <TD> <jsp:include page="index_state.jsp" flush="false"/></TD>
-</tr>
-</table>
+   <jsp:include page="index_mid.jsp"  flush="false"/>
+ </div>
+</div>
+</div>
+</div>
 
+</div>
+<div class="col-sm-3 col-md-3" >
+
+<div class="col-sm-3 col-md-3" >
+</div>
+<div class="col-sm-9 col-md-9" >
+   <div>
+<jsp:include page="index_state.jsp" flush="false"/>
+   </div>
+   </div>
+</div>
 </body>
 </html>

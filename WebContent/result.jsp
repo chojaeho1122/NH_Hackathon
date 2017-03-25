@@ -143,29 +143,7 @@ input {
                     }
                     out.print(" ");
                     out.print(s_id+"님");
-                    out.print("<a href='logout.jsp'>logout</a>");  
-                    /*try
-                    {
-                       Class.forName("org.gjt.mm.mysql.Driver");
-                       conn=DriverManager.getConnection(URL,USER,PASS);
-                       pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
-                       rs = pstmt.executeQuery();
-                       while(rs.next())
-                       {
-                          String coin = rs.getString("COIN");
-                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
-                          
-                       }
-                    }
-                    catch(SQLException e)
-                    {
-                       out.print(e.getMessage());
-                    }
-                    finally{
-                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
-                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
-                    }*/
+                    out.print("<a href='logout.jsp'>logout</a>");   
                     %>
                 </aa>
                 </li>
@@ -191,68 +169,12 @@ input {
        
         <!-- /#page-content-wrapper -->
    <center><br><br><br>
-   <h1>Upload Your Product</h1>
+   <img src="images/1.jpg" width="320" height="320">
    <br><br>
-<form name="writeform" method="post" action="write_ok.jsp" enctype="multipart/form-data">
-  <tr>
-   <td>
-   <table class="upload" frame="void">
-     <tr>
-      <th align="center" width="50">상품명</th>
-      <td><input name="pname" size="50" maxlength="100"></td>
-     </tr>
-    <tr>
-      <th align="center">카테고리</th>
-      <td>
-      <select name="category">
-      <option value="">category</option>
-      <option value="채소">채소</option>
-      <option value="과일">과일</option>
-      <option value="곡물">곡물</option>
-</select></td>
-     </tr>
-    <tr>
-      <th align="center">무게(kg)</th>
-      <td><input name="weight" size="20" maxlength="30"></td>
-     </tr>
-    <tr>
-      <th align="center">가격</th>
-      <td><input name="price" size="20" maxlength="30"></td>
-     </tr>
-     <tr>
-      <th align="center">상품판매기한</th>
-      <td>
-      <select name="due">
-      <option value="">판매기한</option>
-      <option value="1">1일</option>
-      <option value="2">2일</option>
-      <option value="3">3일</option>
-      <option value="4">4일</option>
-      <option value="5">5일</option>
-      <option value="6">6일</option>
-</select></td>
-     </tr>
-    <tr><td>&nbsp;</td>
-    <td><div class="file_input">
-    <label>상품사진
-        <input name="image" type="file" size="40" maxlength="30">
-    </label></div></td>
-     </tr>
-     <tr>
-      <th align="center">상품 설명</th>
-      <td><textarea name="contents" cols="70" rows="13"></textarea></td>
-      <td>&nbsp;</td>
-     </tr>
-     <tr align="center">
-      <td>&nbsp;</td>
-      <td colspan="2"><input class=button type=submit value="등록">
-       <input class=button type=button value="취소" OnClick="javascript:history.back(-1)">
-      <td>&nbsp;</td>
-     </tr>
-    </table>
-   </td>
-  </tr>
-  </form>
+<p>해당 상품을 Dani님에게 보내주세요!</p><br> 
+<h3>[서울특별시 송파구 가락동 10234번지 ***-***] 로</h3><br>
+<p>딸기를 배송해주세요.</p>
+
    </center>
  
 

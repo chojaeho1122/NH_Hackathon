@@ -119,7 +119,7 @@ outline: 0;
  
 .pic {
     max-width: 300px;
-    max-height: 200px;
+    max-height: 250px;
     position: relative;
     overflow: hidden;
     margin: 10px;
@@ -246,7 +246,6 @@ a:hover,
 }
 
 body {
-    background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
     min-height: 100vh;
     font: normal 16px sans-serif;
     padding: 60px 0;
@@ -339,7 +338,7 @@ body {
                     }
                     out.print(" ");
                     out.print(s_id+"님");
-                    
+					out.print("<a href='logout.jsp'>logout</a>");                
                     %>
                 </aa>
                 </li>
@@ -365,8 +364,15 @@ body {
        
         <!-- /#page-content-wrapper -->
    <center><br><br>
-   <h1>농산물 구경하기</h1>
-   <br><br>  
+   <h1>Product List</h1>
+   <br>
+   <div id="footer" style="text-align:right">
+<%
+                    if(role=="farmer"){
+                       out.print("<a href='write.jsp'>write하기</a><img src='images/arrow.png' width='20' height='20'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                    }
+%></div>
+   <br>  
     <!-- /#wrapper -->
 <%
 String realFolder = "";
@@ -396,7 +402,7 @@ realFolder = context.getRealPath(saveFolder);
        				}
                      </script>
                      <div class="pic pic-3d">
-                      <img src=<%=imagePath %> class="pic-image" alt="Pic">
+                      <img src=<%=imagePath %> class="pic-image" alt="Pic" width="300" height="250">
                       <span class="pic-caption open-left">
                     <%
                   if(role=="user"){
@@ -446,12 +452,6 @@ realFolder = context.getRealPath(saveFolder);
 
 
 </div>
-<div id="footer" style="text-align:right">
-<%
-                    if(role=="farmer"){
-                       out.print("<a href='write.jsp'>write하기</a>");
-                    }
-%></div>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
