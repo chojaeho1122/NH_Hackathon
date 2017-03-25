@@ -1,5 +1,5 @@
-<%@ page contentType = "text/html; charset=utf-8" %>
-<%@ page import = "java.sql.*,java.io.*,java.util.zip.*" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import = "java.sql.*" %>
 <%
 String URL = "jdbc:mysql://localhost/hakathon";
 String USER =  "root";

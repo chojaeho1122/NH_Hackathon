@@ -1,33 +1,32 @@
-<%@ page contentType="text/html;charset=EUC-KR"%>
-<!DOCTYPE html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Hackathona</title>
+    <title>welcome to nanu美</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- font awesome -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
     <!-- Custom Style -->
     <link href="css/style.css" rel="stylesheet">
- 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></scri.row>.containerpt>
-    <![endif]-->
-  </head>
-
-  <body onload="login.id.focus()">
-    
-      <div class="row">
-        <div class="page-header">
- 
-        </div>
-        <div class="col-md-3">
-          <div class="login-box well">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<body style="margin-top:40px;" onload="login.id.focus()">
+<table align=center>
+<tr>
+<td><img src="./images/logo.jpg" width=600 height=300></td></tr>
+</table>
+<table align=center>
+<tr>
+   <td>
+    <!-- <div class="container">
+      <div class="row" >
+        </div> -->
+        <div>
+          <div>
         <form name="login" accept-charset="UTF-8" role="form" method="post" action="loginProc.jsp">
             <legend>login</legend>
             <div class="form-group">
@@ -51,10 +50,19 @@
         </div>
       </div>
     </div>
- 
+ </td>
+ <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
-  </body>
-  </html>
+   
+   
+   <TD> <jsp:include page="index_mid.jsp"  flush="false"/></TD>
+   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+   <TD> <jsp:include page="index_state.jsp" flush="false"/></TD>
+</tr>
+</table>
+
+</body>
+</html>
