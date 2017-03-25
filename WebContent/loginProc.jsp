@@ -28,22 +28,18 @@
         Class.forName("org.gjt.mm.mysql.Driver");
         conn=DriverManager.getConnection(URL,USER,PASS);
         
-<<<<<<< HEAD
         // isLogin 은 로그인 확인 유무를 위한 변수
         boolean isLogin = false;
         while(rs.next()) {
             // rs.next가 true 라면 = 정보가 있다
             isLogin = true;
         }
-=======
         /*나중에 pwd encrypt하기 */ 
         pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + id + "' AND PWD='" + pwd + "'");
         rs = pstmt.executeQuery();
         /*농부확인*/
         pstmt2=conn.prepareStatement("SELECT * FROM FARMER WHERE ID='" + id + "' AND PWD='" + pwd + "'");
         rs2 = pstmt2.executeQuery();
->>>>>>> 90ef369a90d5b5c6b5ad78c2585406f68e70a7f6
-        
         if(rs.next()){
            String role = "user";
            session.setAttribute("s_id",id);
