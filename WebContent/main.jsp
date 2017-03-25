@@ -140,6 +140,21 @@ outline: 0;
 	<center>
 	<h1>main</h1>
 	</center>
+	<!-- 상단바 부분 -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">  </a>
+    </div>
+    <ul class="nav navbar-nav">
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href='#'><span class="glyphicon glyphicon-user"></span>정보수정 </a></li>
+      <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
+    </ul>
+  </div>
+</nav>
+	<!-- 상단바 부분 끝 -->
     </div>
     <!-- /#wrapper -->
 

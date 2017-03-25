@@ -39,8 +39,8 @@ ResultSet rs=null;
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
-    <link rel="stylesheet" href="./css/gallery-grid.css">
-
+    <link rel="stylesheet" href="./css/gallery-grid.css"><!-- 이부분때문에 바디가 내려옴 -->
+<!-- 갤러리 부분 끝 -->
 
 </head>
 <style>
@@ -83,7 +83,7 @@ table.upload td {
  a:hover { color: none; text-decoration: none;}
 
 </style>
-<body style="margin-top:-75px;">
+<body style="margin-top:-70px;">
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -169,9 +169,9 @@ table.upload td {
         </div>                        </div>--><!-- 주석처리 했음 -->
         
         <!-- /#page-content-wrapper -->
-	<center>
+	<!--<center>
 	<h1>My PAGE</h1>
-	</center>
+	</center>  -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -193,12 +193,11 @@ table.upload td {
      
 <div class="container gallery-container">
 
-    <h1><%  out.print(s_id);out.print("님이 투자한 상품");%></h1>
+    <h1>My Page</h1>
 
-    <p class="page-description text-center">Grid Layout With Zoom Effect</p>
+    <p class="page-description text-center">	<%  out.print(s_id);out.print("님이 투자한 상품");%></p>
     
     <div class="tz-gallery">
-
         <div class="row">
             <div class="col-sm-6 col-md-4">
                 <a class="lightbox" href="../images/park.jpg">
@@ -216,9 +215,30 @@ table.upload td {
                 </a>
             </div>
         </div>
-
     </div>
-
+    
+    <p class="page-description text-center">	<%  out.print(s_id);out.print("님의 기여도");%></p>
+    
+    <div class="tz-gallery">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <a class="lightbox" href="../images/park.jpg">
+                    <!-- 기여도 관련된 코딩이 들어가면 되는 부분 -->
+                </a>
+            </div>
+        </div>
+    </div>
+	<p class="page-description text-center">	<%  out.print(s_id);out.print("님의 당첨내역");%></p>
+    
+    <div class="tz-gallery">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <a class="lightbox" href="../images/park.jpg">
+                    <!-- 당첨내역 관련된 코딩이 들어가면 되는 부분 -->
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
