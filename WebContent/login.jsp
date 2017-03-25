@@ -49,7 +49,7 @@ body {
             <span class='text-center'><a href="/bbs/index.php?mid=index&act=dispMemberFindAccount" class="text-sm">find password</a></span>
             <hr />
             <div class="form-group">
-                <a href="" class="btn btn-default btn-block m-t-md">Join</a>
+                <a href="signUp.jsp" class="btn btn-default btn-block m-t-md">Sign Up</a>
             </div>
         </form>
           </div>

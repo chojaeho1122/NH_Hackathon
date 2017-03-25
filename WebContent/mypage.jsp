@@ -82,6 +82,72 @@ table.upload td {
  a:visited { color: none; text-decoration: none;}
  a:hover { color: none; text-decoration: none;}
 
+body {
+    background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
+    min-height: 100vh;
+    font: normal 16px sans-serif;
+    padding: 60px 0;
+}
+
+.container.gallery-container {
+    background-color: #fff;
+    color: #35373a;
+    min-height: 100vh;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
+}
+
+.gallery-container h1 {
+    text-align: center;
+    margin-top: 70px;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+}
+
+.gallery-container p.page-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 25px auto;
+    color: #888;
+    font-size: 18px;
+}
+
+.tz-gallery {
+    padding: 40px;
+}
+
+.tz-gallery .lightbox img {
+    width: 100%;
+    margin-bottom: 30px;
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+
+.tz-gallery .lightbox img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.tz-gallery img {
+    border-radius: 4px;
+}
+
+.baguetteBox-button {
+    background-color: transparent !important;
+}
+
+
+@media(max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .container.gallery-container {
+        border-radius: 0;
+    }
+}
+
 </style>
 <body style="margin-top:-70px;">
     <div id="wrapper">
@@ -89,6 +155,7 @@ table.upload td {
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
+
    				<li>
    				<img style="
 					border-radius: 70px;
@@ -99,12 +166,12 @@ table.upload td {
    				</li>
                 <li>
                 <aa>
-                  	<%
+                     <%
                     String s_id=null;
                     if(session.getAttribute("s_id")==null){
-                    	response.sendRedirect("login.jsp");
+                       response.sendRedirect("login.jsp");
                     }else{
-                    	s_id=(String)session.getAttribute("s_id");
+                       s_id=(String)session.getAttribute("s_id");
                     }
                     out.print(" ");
                     out.print(s_id+"님");
@@ -116,25 +183,25 @@ table.upload td {
                     <%
                     try
                     {
-                    	Class.forName("org.gjt.mm.mysql.Driver");
-                    	conn=DriverManager.getConnection(URL,USER,PASS);
-                    	pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
-                    	rs = pstmt.executeQuery();
-                    	while(rs.next())
-                    	{
-                    		String coin = rs.getString("COIN");
-                    		out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
-                    		
-                    	}
+                       Class.forName("org.gjt.mm.mysql.Driver");
+                       conn=DriverManager.getConnection(URL,USER,PASS);
+                       pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
+                       rs = pstmt.executeQuery();
+                       while(rs.next())
+                       {
+                          String coin = rs.getString("COIN");
+                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
+                          
+                       }
                     }
                     catch(SQLException e)
                     {
-                    	out.print(e.getMessage());
+                       out.print(e.getMessage());
                     }
                     finally{
-                    	if(rs!=null)try{rs.close();}catch(SQLException ex){}
-                    	if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-                    	if(conn!=null)try{conn.close();}catch(SQLException ex){}
+                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
+                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
                     %>
                 </aa>
@@ -160,29 +227,32 @@ table.upload td {
 
         <!-- Page Content -->
       <!--  <div id="page-content-wrapper">
-            	<div class="container-fluid">
-                	<div class="row">
-                   		<div class="col-lg-12">
-                        	<a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-         	      	 	</div>   
-            		</div>
-        		</div>                       
-         	</div>--><!-- 주석처리 했음 -->
+
+               <div class="container-fluid">
+                   <div class="row">
+                         <div class="col-lg-12">
+                           <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
+                         </div>   
+                  </div>
+              </div>                       
+            </div>--><!-- 주석처리 했음 -->
         
         <!-- /#page-content-wrapper -->
-	<!--<center>
-	<h1>My PAGE</h1>
-	</center>  -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+   <!--<center>
+   <h1>My PAGE</h1>
+   </center>  -->
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+     
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand">  </a>
     </div>
     <ul class="nav navbar-nav">
     <li>
-    		
+
+          
             <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-         	      	 	
+            
     </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -191,7 +261,6 @@ table.upload td {
     </ul>
   </div>
 </nav>
-	
 <form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data">
    
       <!-- 갤러리 시작 -->
@@ -200,7 +269,8 @@ table.upload td {
 
     <h1>My Page</h1>
 
-    <p class="page-description text-center">	<%  out.print(s_id);out.print("님이 투자한 상품");%></p>
+
+    <p class="page-description text-center">   <%  out.print(s_id);out.print("님이 투자한 상품");%></p>
     
     <div class="tz-gallery">
         <div class="row">
@@ -222,8 +292,8 @@ table.upload td {
         </div>
     </div>
     
-    <p class="page-description text-center">	<%  out.print(s_id);out.print("님의 기여도");%></p>
-    
+    <p class="page-description text-center">   <%  out.print(s_id);out.print("님의 기여도");%></p>
+  
     <div class="tz-gallery">
         <div class="row">
             <div class="col-sm-12 col-md-12">
@@ -233,7 +303,7 @@ table.upload td {
             </div>
         </div>
     </div>
-	<p class="page-description text-center">	<%  out.print(s_id);out.print("님의 당첨내역");%></p>
+   <p class="page-description text-center">   <%  out.print(s_id);out.print("님의 당첨내역");%></p>
     
     <div class="tz-gallery">
         <div class="row">
@@ -252,7 +322,7 @@ table.upload td {
 </script>
      <!-- 갤러리 끝 -->
   </form>
-	</center>
+   </center>
 
     </div>
     <!-- /#wrapper -->
