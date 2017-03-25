@@ -155,14 +155,15 @@ body {
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-               <li>
-               <img style="
-               border-radius: 70px;
-               -moz-border-radius: 70px;
-               -khtml-border-radius: 70px;
-               -webkit-border-radius: 70px;"
-                src="http://localhost:8080/hakaton/imageResponse.jsp" alt="로딩" width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
-               </li>
+
+   				<li>
+   				<img style="
+					border-radius: 70px;
+					-moz-border-radius: 70px;
+					-khtml-border-radius: 70px;
+					-webkit-border-radius: 70px;"
+					 src="http://localhost:8080/hakaton/imageResponse.jsp" alt="로딩" width=100 height="100"/><!-- imageResponse를 부르기만 하는 것 -->
+   				</li>
                 <li>
                 <aa>
                      <%
@@ -226,6 +227,7 @@ body {
 
         <!-- Page Content -->
       <!--  <div id="page-content-wrapper">
+
                <div class="container-fluid">
                    <div class="row">
                          <div class="col-lg-12">
@@ -240,15 +242,17 @@ body {
    <h1>My PAGE</h1>
    </center>  -->
    <nav class="navbar navbar-inverse navbar-fixed-top">
+     
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand">  </a>
     </div>
     <ul class="nav navbar-nav">
     <li>
+
           
             <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-                         
+            
     </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -257,7 +261,6 @@ body {
     </ul>
   </div>
 </nav>
-   
 <form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data">
    
       <!-- 갤러리 시작 -->
@@ -265,6 +268,7 @@ body {
 <div class="container gallery-container">
 
     <h1>My Page</h1>
+
 
     <p class="page-description text-center">   <%  out.print(s_id);out.print("님이 투자한 상품");%></p>
     
@@ -289,7 +293,7 @@ body {
     </div>
     
     <p class="page-description text-center">   <%  out.print(s_id);out.print("님의 기여도");%></p>
-    
+  
     <div class="tz-gallery">
         <div class="row">
             <div class="col-sm-12 col-md-12">
