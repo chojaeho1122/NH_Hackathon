@@ -1,4 +1,4 @@
-<%@ page contentType = "text/html; charset=utf-8" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import = "java.sql.*" %>
 <%
 String URL = "jdbc:mysql://localhost/hakathon";
@@ -50,6 +50,128 @@ outline: 0;
  a:visited { color: none; text-decoration: none;}
  a:hover { color: none; text-decoration: none;}
 
+.pic {
+    max-width: 300px;
+    max-height: 200px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    display: inline-block;
+    -webkit-animation: anima 2s;
+    -moz-animation: anima 2s;
+    -o-animation: anima 2s;
+    -ms-animation: anima 2s;
+    animation: anima 2s;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+	
+
+}
+
+.pic-3d {
+    -webkit-perspective: 500;
+    -moz-perspective: 500;
+    -o-perspective: 500;
+    -ms-perspective: 500;
+    perspective: 500;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d
+}
+
+.pic-caption {
+    cursor: default;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.41);
+    padding: 10px;
+    text-align: center;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0
+}
+
+.pic-image {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1)
+}
+
+.pic:hover .pic-image {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1)
+}
+
+.pic-title {
+    font-size: 1.8em
+}
+a,
+a:hover,
+.pic .pic-image,
+.pic-caption,
+.pic:hover .pic-caption,
+.pic:hover img {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease
+}
+
+
+.pic:hover .open-left{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -moz-touch-callout: none;
+    -o-touch-callout: none;
+    -ms-touch-callout: none;
+    touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -o-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+    tap-highlight-color: transparent
+}
+
+.open-left {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    left: 0;
+    top: 0
+}
+
+.pic:hover .open-left {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg)
+}
 </style>
 <body>
     <div id="wrapper">
@@ -58,55 +180,41 @@ outline: 0;
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                 <li>
-   				<img style="
-					border-radius: 70px;
-					-moz-border-radius: 70px;
-					-khtml-border-radius: 70px;
-					-webkit-border-radius: 70px;"
-					 src="http://localhost:8080/hakaton/imageResponse.jsp" alt="Î°úÎî©" width=100 height="100"/>
-   				</li>
-                <li><aa>
                     <%
                     String s_id=null;
+                    String role=null; /* farmer user */
                     if(session.getAttribute("s_id")==null){
-                    	response.sendRedirect("login.jsp");
+                       response.sendRedirect("login.jsp");
                     }else{
-                    	s_id=(String)session.getAttribute("s_id");
+                       s_id=(String)session.getAttribute("s_id");
+                       role=(String)session.getAttribute("role"); /* farmer user */
+                       System.out.print(role);
                     }
                     out.print(" ");
-                    out.print(s_id+"Îãò");
-                    %>
-                    </aa>
-                    </li>
-                    
-                    <li>
-                    <aa>
-                    <%
+                    out.print(s_id+"¥‘");
                     try
                     {
-                    	Class.forName("org.gjt.mm.mysql.Driver");
-                    	conn=DriverManager.getConnection(URL,USER,PASS);
-                    	pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
-                    	rs = pstmt.executeQuery();
-                    	while(rs.next())
-                    	{
-                    		String coin = rs.getString("COIN");
-                    		out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"Ïõê");
-                    		
-                    	}
+                       Class.forName("org.gjt.mm.mysql.Driver");
+                       conn=DriverManager.getConnection(URL,USER,PASS);
+                       pstmt=conn.prepareStatement("SELECT * FROM USER WHERE ID='" + s_id + "'");
+                       rs = pstmt.executeQuery();
+                       while(rs.next())
+                       {
+                          String coin = rs.getString("COIN");
+                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"ø¯");
+                          
+                       }
                     }
                     catch(SQLException e)
                     {
-                    	out.print(e.getMessage());
+                       out.print(e.getMessage());
                     }
                     finally{
-                    	if(rs!=null)try{rs.close();}catch(SQLException ex){}
-                    	if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-                    	if(conn!=null)try{conn.close();}catch(SQLException ex){}
+                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
+                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
                     %>
-                    </aa></li>
-                    <li>
                 <a href='logout.jsp'>logout</a><br><br>
                 </li>
                 <li>
@@ -128,6 +236,7 @@ outline: 0;
         <!-- Page Content -->
         
         <!-- /#page-content-wrapper -->
+<<<<<<< HEAD
 	<center>
 	<h1>main</h1>
 	</center>
@@ -152,9 +261,72 @@ outline: 0;
   </div>
 </nav>
 	<!-- ÏÉÅÎã®Î∞î Î∂ÄÎ∂Ñ ÎÅù -->
+=======
+   <center>
+   <h1>≥ÛªÍπ∞ ±∏∞Ê«œ±‚</h1>
+   </center>
+>>>>>>> 90ef369a90d5b5c6b5ad78c2585406f68e70a7f6
     </div>
+    <center><br><br>
     <!-- /#wrapper -->
+<%
+String realFolder = "";
+String saveFolder = "upload";
+ServletContext context = getServletContext();
+realFolder = context.getRealPath(saveFolder);
+		try
+                    {
+                       Class.forName("org.gjt.mm.mysql.Driver");
+                       conn=DriverManager.getConnection(URL,USER,PASS);
+                       pstmt=conn.prepareStatement("SELECT * FROM PRODUCT ORDER BY IDX DESC;");
+                       rs = pstmt.executeQuery();
+                       while(rs.next()){
+   						String pname = rs.getString(2);
+   						String weight = rs.getString(4);
+   						String price = rs.getString(5);
+   						String image = rs.getString(8);
+   						String contents = rs.getString(9);
+   						String farmer_id = rs.getString(10);
+   						
+   						String imagePath = realFolder + "\\" + image;
+   						%>
+   						<div class="pic pic-3d">
+                		<a href="buyProc.jsp"><img src=<%=imagePath %> class="pic-image" alt="Pic"></a>
+                		<span class="pic-caption open-left">
+		        		<h1 class="pic-title"><%=pname %></h1>
+		        		<p>
+		        		<table>
+		        		<tr><td width="80">π´∞‘</td><td><%=weight %>kg</td></tr>
+						<tr><td width="80">∞°∞›</td><td><%=price %>ø¯</td></tr>
+						<tr><td width="80">∞‘Ω√¿⁄</td><td><%=farmer_id %></td></tr>
+						<tr><td width="80">º≥∏Ì</td><td><%=contents %></td></tr>
+						</table>
+						</p></span>
+            			</div>
+   						
+   						<!--<table>
+						<tr><td colspan="2"><img src=<%=imagePath %> width=170 height=200></td></tr>
+						<tr><td width="80">ªÛ«∞∏Ì</td><td><%=pname %></td></tr>
+						<tr><td width="80">π´∞‘</td><td><%=weight %>kg</td></tr>
+						<tr><td width="80">∞°∞›</td><td><%=price %>ø¯</td></tr>
+						<tr><td width="80">∞‘Ω√¿⁄</td><td><%=farmer_id %></td></tr>
+						<tr><td width="80">º≥∏Ì</td><td><%=contents %></td></tr>
+						</table><br>-->
+   						<%
 
+                    	}
+                    }
+                    catch(SQLException e)
+                    {
+                       out.print(e.getMessage());
+                    }
+                    finally{
+                       if(rs!=null)try{rs.close();}catch(SQLException ex){}
+                       if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+                       if(conn!=null)try{conn.close();}catch(SQLException ex){}
+                    }
+%>
+</center>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
