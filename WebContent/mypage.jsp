@@ -30,6 +30,17 @@ ResultSet rs=null;
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></scri.row>.containerpt>
     <![endif]-->
+<!-- 이부분부터는 갤러리를 위함 -->
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Freebie: 4 Bootstrap Gallery Templates</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link rel="stylesheet" href="./css/gallery-grid.css">
+
 
 </head>
 <style>
@@ -72,7 +83,7 @@ table.upload td {
  a:hover { color: none; text-decoration: none;}
 
 </style>
-<body>
+<body style="margin-top:-75px;">
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -148,28 +159,25 @@ table.upload td {
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+      <!--  <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                   <div class="col-lg-12">
                         <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-                        </div>
-                </div>
+                </div>   
             </div>
-        </div>
+        </div>                        </div>--><!-- 주석처리 했음 -->
+        
         <!-- /#page-content-wrapper -->
 	<center>
 	<h1>My PAGE</h1>
 	</center>
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">  </a>
+      <a class="navbar-brand">  </a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href='#'><span class="glyphicon glyphicon-user"></span>정보수정 </a></li>
@@ -180,55 +188,44 @@ table.upload td {
 	
 	<br><br>
 <form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data">
-   <table class="upload" frame="void">
-     <tr>
-      <th align="center">투자한 상품</th>
-      <th><%  out.print(" ");out.print(s_id+"님이 투자한 상품");%></th>
-     </tr>
-     <tr>
+   
+      <!-- 갤러리 시작 -->
+     
+<div class="container gallery-container">
+
+    <h1><%  out.print(s_id);out.print("님이 투자한 상품");%></h1>
+
+    <p class="page-description text-center">Grid Layout With Zoom Effect</p>
     
-     </tr>
-    <tr>
-      <th align="center">무게(kg)</th>
-      <td><input name="weight" size="20" maxlength="30"></td>
-     </tr>
-    <tr>
-      <th align="center">가격</th>
-      <td><input name="price" size="20" maxlength="30"></td>
-     </tr>
-     <tr>
-      <th align="center">상품판매기한</th>
-      <td>
-<select name="due">
-      <option value="">판매기한</option>
-      <option value="1">1일</option>
-      <option value="2">2일</option>
-      <option value="3">3일</option>
-      <option value="4">4일</option>
-      <option value="5">5일</option>
-      <option value="6">6일</option>
-      <option value="7">7일</option>
-</select>
-</td>
-     </tr>
-    <tr>
-      <th align="center">상품 사진</th>
-      <td><input name="image" type="file" size="40" maxlength="30"></td>
-     </tr>
-     <tr>
-      <th align="center">상품 설명</th>
-      <td><textarea name="contents" cols="70" rows="13"></textarea></td>
-      <td>&nbsp;</td>
-     </tr>
-     <tr align="center">
-      <td>&nbsp;</td>
-      <td colspan="2"><input class=button type=submit value="등록">
-       <input class=button type=button value="취소" OnClick="javascript:history.back(-1)">
-      <td>&nbsp;</td>
-     </tr>
-    </table>
-   </td>
-  </tr>
+    <div class="tz-gallery">
+
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="../images/park.jpg">
+                    <img src="../images/park.jpg" alt="Park">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="../images/bridge.jpg">
+                    <img src="../images/bridge.jpg" alt="Bridge">
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <a class="lightbox" href="../images/tunnel.jpg">
+                    <img src="../images/tunnel.jpg" alt="Tunnel">
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
+     <!-- 갤러리 끝 -->
   </form>
 	</center>
 
