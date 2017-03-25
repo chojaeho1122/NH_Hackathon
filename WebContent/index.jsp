@@ -66,9 +66,9 @@
   <script src="js/bootstrap.min.js"></script>
    
    
-   <TD> <jsp:include page="test_01.jsp"  flush="false"/></TD>
+   <TD> <jsp:include page="index_mid.jsp"  flush="false"/></TD>
    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-   <TD> <jsp:include page="test_view.jsp" flush="false"/></TD>
+   <TD> <jsp:include page="index_state.jsp" flush="false"/></TD>
 </tr>
 </table>
 
