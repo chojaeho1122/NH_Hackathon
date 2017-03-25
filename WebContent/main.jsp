@@ -348,7 +348,7 @@ realFolder = context.getRealPath(saveFolder);
                 		<span class="pic-caption open-left">
 		        		<%
 						if(role=="user"){
-                       out.print("<a href='buyProc.jsp?idx="+idx+"'><h1 class='pic-title'>"+pname+"</h1></a>");
+                       out.print("<a href='buyProc.jsp?idx="+idx+"' ><h1 class='pic-title'>"+pname+"</h1></a>");
                     }else
                     {
                     	out.print("<h1 class='pic-title'>"+pname+"</h1>");
