@@ -44,6 +44,73 @@ ResultSet rs=null;
 
 </head>
 <style>
+    .zt-skill-bar {
+        color: #fff;
+        font-size: 11px;
+        line-height: 25px;
+        height: 25px;
+        margin-bottom: 5px;
+
+        background-color: rgba(0,0,0,0.1);
+
+        -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+            -ms-border-radius: 2px;
+                border-radius: 2px;
+
+    }
+
+    .zt-skill-bar * {
+        webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+           -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+               transition: all 0.5s ease;
+    }
+
+    .zt-skill-bar div {
+        background-color: #9FC93C;
+        position: relative;
+        padding-left: 25px;
+        width: 0;
+
+        -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+           -ms- border-radius: 2px;
+                border-radius: 2px;
+    }
+
+    .zt-skill-bar span {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        padding: 0 5px 0 10px;
+        background-color: #1a1a1a;
+
+        -webkit-border-radius: 0 2px 2px 0;
+           -moz-border-radius: 0 2px 2px 0;
+            -ms-border-radius: 0 2px 2px 0;
+                border-radius: 0 2px 2px 0;
+    }
+
+    .zt-skill-bar span:before {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        top: 50%;
+        left: -3px;
+        margin-top: -3px;
+        background-color: #1a1a1a;
+
+        -webkit-transform: rotate(45deg);
+           -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+    }
+
 .btn{
 border: 0;
 outline: 0;
@@ -55,32 +122,139 @@ outline: 0;
 .btn:active {
 border: 0;
 outline: 0;
+}
+
+ a:link { color: none;; text-decoration: none; color:#000;}
+ a:visited { color: none; text-decoration: none; color:#000;}
+ a:hover { color: none; text-decoration: none; color: #9FC93C;}
+ 
+.pic {
+    max-width: 300px;
+    max-height: 200px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    display: inline-block;
+    -webkit-animation: anima 2s;
+    -moz-animation: anima 2s;
+    -o-animation: anima 2s;
+    -ms-animation: anima 2s;
+    animation: anima 2s;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+   
 
 }
 
-table.upload {
-    border-collapse: separate;
-    border-spacing: 1px;
-    text-align: left;
-    line-height: 1.5;
-    margin: 0px 0px 0px 200px;
-    border-bottom: none;
+.pic-3d {
+    -webkit-perspective: 500;
+    -moz-perspective: 500;
+    -o-perspective: 500;
+    -ms-perspective: 500;
+    perspective: 500;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d
 }
-table.upload th {
-    width: 150px;
+
+.pic-caption {
+    cursor: default;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.41);
     padding: 10px;
-    font-weight: bold;
-    border-bottom: none;
-}
-table.upload td {
-    width: 350px;
-    padding: 10px;
-    vertical-align: top;
+    text-align: center;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0
 }
 
- a:link { color: none;; text-decoration: none;}
- a:visited { color: none; text-decoration: none;}
- a:hover { color: none; text-decoration: none;}
+.pic-image {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1)
+}
+
+.pic:hover .pic-image {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1)
+}
+
+.pic-title {
+    font-size: 1.8em
+}
+a,
+a:hover,
+.pic .pic-image,
+.pic-caption,
+.pic:hover .pic-caption,
+.pic:hover img {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease
+}
+
+
+.pic:hover .open-left{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -moz-touch-callout: none;
+    -o-touch-callout: none;
+    -ms-touch-callout: none;
+    touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -o-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+    tap-highlight-color: transparent
+}
+
+.open-left {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    left: 0;
+    top: 0
+}
+
+.pic:hover .open-left {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg)
+}
+
+#footer {
+    width:100%;
+    height:50px;
+}
 
 body {
     background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
@@ -147,7 +321,6 @@ body {
         border-radius: 0;
     }
 }
-
 </style>
 <body style="margin-top:-70px;">
     <div id="wrapper">
@@ -167,19 +340,16 @@ body {
                 <aa>
                      <%
                     String s_id=null;
+                    String role=null; /* farmer user */
                     if(session.getAttribute("s_id")==null){
                        response.sendRedirect("login.jsp");
                     }else{
                        s_id=(String)session.getAttribute("s_id");
+                       role=(String)session.getAttribute("role"); /* farmer user */
+                       System.out.print(role);
                     }
                     out.print(" ");
                     out.print(s_id+"님");
-                    %>
-                </aa>
-                </li>
-                <li>
-                <aa>    
-                    <%
                     try
                     {
                        Class.forName("org.gjt.mm.mysql.Driver");
@@ -189,7 +359,7 @@ body {
                        while(rs.next())
                        {
                           String coin = rs.getString("COIN");
-                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
+                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
                           
                        }
                     }
@@ -205,8 +375,7 @@ body {
                     %>
                 </aa>
                 </li>
-                <li>    
-                <a href='logout.jsp'>logout</a><br><br>
+                <li>&nbsp;
                 </li>
                 <li>
                     <a href="mypage.jsp">Mypage</a>
@@ -258,7 +427,7 @@ body {
   </div>
 </nav>
    
-<form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data">
+<form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data" style="margin-top:60px;">
    
       <!-- 갤러리 시작 -->
      
@@ -266,7 +435,7 @@ body {
 
     <h1>My Page</h1>
 
-    <p class="page-description text-center">   <%  out.print(s_id);out.print("님이 투자한 상품");%></p>
+    <p><%  out.print(s_id);out.print("님이 투자한 상품");%></p>
     
     <div class="tz-gallery">
         <div class="row">

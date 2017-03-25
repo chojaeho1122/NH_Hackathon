@@ -1,16 +1,16 @@
 <%@page import="java.io.File"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest,java.util.*,java.io.*"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import = "java.sql.*" %>
 <%
     try {
-        // µå¶óÀÌ¹ö ·Îµù
+        // ë“œë¼ì´ë²„ ë¡œë”©
         //String driver = "oracle.jdbc.driver.OracleDriver";
         //Class.forName(driver);
         Class.forName("org.gjt.mm.mysql.Driver");
         
-        // °ü¸®ÀÚ Login
+        // ê´€ë¦¬ì Login
         String URL = "jdbc:mysql://localhost/hakathon";
 		String USER =  "root";
 		String PASS="hakathon";
@@ -19,14 +19,14 @@
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
-		String realFolder = ""; //ÆÄÀÏ°æ·Î¸¦ ¾Ë¾Æº¸±âÀ§ÇÑ ÀÓ½Ãº¯¼ö¸¦ ÇÏ³ª ¸¸µé°í,
-		String saveFolder = "upload"; //ÆÄÀÏÀúÀå Æú´õ¸íÀ» ¼³Á¤ÇÑ µÚ¿¡...
-		String encType = "utf-8"; //ÀÎÄÚµù¹æ½Äµµ ÇÔ²² ¼³Á¤ÇÑ µÚ,
-		int maxSize = 10*1024*1024; //ÆÄÀÏ ÃÖ´ë¿ë·®(ÇöÀç 10¸Ş°¡)
+		String realFolder = ""; //íŒŒì¼ê²½ë¡œë¥¼ ì•Œì•„ë³´ê¸°ìœ„í•œ ì„ì‹œë³€ìˆ˜ë¥¼ í•˜ë‚˜ ë§Œë“¤ê³ ,
+		String saveFolder = "upload"; //íŒŒì¼ì €ì¥ í´ë”ëª…ì„ ì„¤ì •í•œ ë’¤ì—...
+		String encType = "utf-8"; //ì¸ì½”ë”©ë°©ì‹ë„ í•¨ê»˜ ì„¤ì •í•œ ë’¤,
+		int maxSize = 10*1024*1024; //íŒŒì¼ ìµœëŒ€ìš©ëŸ‰(í˜„ì¬ 10ë©”ê°€)
 		ServletContext context = getServletContext();
-		realFolder = context.getRealPath(saveFolder);//¼­¹ö¿¡ ÀúÀåÇÑ °æ·Î
+		realFolder = context.getRealPath(saveFolder);//ì„œë²„ì— ì €ì¥í•œ ê²½ë¡œ
 
-         // Àü ÆäÀÌÁöÀÎ write.jsp input¿¡ ÀÔ·ÂÇÑ °ªµéÀ» º¯¼ö¿¡ ´ã´Â´Ù
+         // ì „ í˜ì´ì§€ì¸ write.jsp inputì— ì…ë ¥í•œ ê°’ë“¤ì„ ë³€ìˆ˜ì— ë‹´ëŠ”ë‹¤
         MultipartRequest multi = new MultipartRequest( request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
           
  		Enumeration files = multi.getFileNames();
@@ -46,23 +46,23 @@
         /*while(files.hasMoreElements()){
    	      String name = (String)files.nextElement();
          String fileName = multi.getFilesystemName(name);
-         String now = pdate;  //ÇöÀç½Ã°£
+         String now = pdate;  //í˜„ì¬ì‹œê°„
  
          int i = -1;
-         i = fileName.lastIndexOf("."); // ÆÄÀÏ È®ÀåÀÚ À§Ä¡
-         String realFileName = now + fileName.substring(i, fileName.length());  //ÇöÀç½Ã°£°ú È®ÀåÀÚ ÇÕÄ¡±â
+         i = fileName.lastIndexOf("."); // íŒŒì¼ í™•ì¥ì ìœ„ì¹˜
+         String realFileName = now + fileName.substring(i, fileName.length());  //í˜„ì¬ì‹œê°„ê³¼ í™•ì¥ì í•©ì¹˜ê¸°
    
    		 File oldFile = new File(saveFolder + fileName);
    		 File newFile = new File(saveFolder + realFileName); 
    
-   		 oldFile.renameTo(newFile); // ÆÄÀÏ¸í º¯°æ
+   		 oldFile.renameTo(newFile); // íŒŒì¼ëª… ë³€ê²½
         }*/
    
          //while(files.hasMoreElements()){
-   	      String name = (String)files.nextElement();//ÆÄ¶ó¸ŞÅÍÀÌ¸§À» °¡Á®¿ÂµÚ
-   	      String filename = multi.getFilesystemName(name);//ÀÌ¸§À» ÀÌ¿ëÇØ ÀúÀåµÈ ÆÄÀÏÀÌ¸§À» °¡Á®¿Â´Ù.
-          //out.println("ÀúÀåµÈ ÆÄÀÏ ÀÌ¸§ : " + filename +"<br>");
-   	      //out.println("ÀúÀåµÈ ÆÄÀÏ °æ·Î : " + realFolder +"<br>");
+   	      String name = (String)files.nextElement();//íŒŒë¼ë©”í„°ì´ë¦„ì„ ê°€ì ¸ì˜¨ë’¤
+   	      String filename = multi.getFilesystemName(name);//ì´ë¦„ì„ ì´ìš©í•´ ì €ì¥ëœ íŒŒì¼ì´ë¦„ì„ ê°€ì ¸ì˜¨ë‹¤.
+          //out.println("ì €ì¥ëœ íŒŒì¼ ì´ë¦„ : " + filename +"<br>");
+   	      //out.println("ì €ì¥ëœ íŒŒì¼ ê²½ë¡œ : " + realFolder +"<br>");
          //}
          
         // insert
@@ -92,7 +92,7 @@ catch(SQLException e)
     %>
 <script language=javascript>
 
-   self.window.alert("¾÷·Îµå ¼º°ø");
+   self.window.alert("ì—…ë¡œë“œ ì„±ê³µ");
    location.href="main.jsp"; 
 
 </script>

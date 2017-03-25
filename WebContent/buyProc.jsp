@@ -84,6 +84,3 @@
        out.print(e.getMessage());
     }
 %> 
-<script>
-
-</script>

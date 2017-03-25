@@ -339,12 +339,6 @@ body {
                     }
                     out.print(" ");
                     out.print(s_id+"님");
-                    %>
-                </aa>
-                </li>
-                <li>
-                <aa>    
-                    <%
                     try
                     {
                        Class.forName("org.gjt.mm.mysql.Driver");
@@ -354,7 +348,7 @@ body {
                        while(rs.next())
                        {
                           String coin = rs.getString("COIN");
-                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
+                          out.print("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coin : "+coin+"원");
                           
                        }
                     }
@@ -368,7 +362,9 @@ body {
                        if(conn!=null)try{conn.close();}catch(SQLException ex){}
                     }
                     %>
-                     </aa>
+                </aa>
+                </li>
+                <li>&nbsp;
                 </li>
                 <li>
                     <a href="mypage.jsp">Mypage</a>
@@ -417,12 +413,17 @@ realFolder = context.getRealPath(saveFolder);
                      String count = rs.getString(11);
                      String imagePath = realFolder + "\\" + image;
                      %>
+                     <script>
+                     function check(){
+                    	 return confirm("결제가 진 행됩니다.");
+       				}
+                     </script>
                      <div class="pic pic-3d">
                       <a href="buyProc.jsp"><img src=<%=imagePath %> class="pic-image" alt="Pic"></a>
                       <span class="pic-caption open-left">
                     <%
                   if(role=="user"){
-                       out.print("<a href='buyProc.jsp?idx="+idx+"'><h1 class='pic-title'>"+pname+"</h1></a>");
+                       out.print("<a href='buyProc.jsp?idx="+idx+"' onclick='return check();'><h1 class='pic-title'>"+pname+"</h1></a>");
                     }else
                     {
                        out.print("<h1 class='pic-title'>"+pname+"</h1>");
@@ -528,6 +529,8 @@ realFolder = context.getRealPath(saveFolder);
             }
         });
     }(jQuery));
+    
+    
     </script>
 
 </body>
