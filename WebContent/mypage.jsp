@@ -160,13 +160,14 @@ table.upload td {
 
         <!-- Page Content -->
       <!--  <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                   <div class="col-lg-12">
-                        <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
-                </div>   
-            </div>
-        </div>                        </div>--><!-- 주석처리 했음 -->
+            	<div class="container-fluid">
+                	<div class="row">
+                   		<div class="col-lg-12">
+                        	<a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
+         	      	 	</div>   
+            		</div>
+        		</div>                       
+         	</div>--><!-- 주석처리 했음 -->
         
         <!-- /#page-content-wrapper -->
 	<!--<center>
@@ -178,6 +179,11 @@ table.upload td {
       <a class="navbar-brand">  </a>
     </div>
     <ul class="nav navbar-nav">
+    <li>
+    		
+            <a href="#menu-toggle" id="menu-toggle" class="fa fa-align-justify" aria-hidden="true"></a>
+         	      	 	
+    </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href='#'><span class="glyphicon glyphicon-user"></span>정보수정 </a></li>
@@ -186,7 +192,6 @@ table.upload td {
   </div>
 </nav>
 	
-	<br><br>
 <form name="writeform" method="get" action="write_ok.jsp" enctype="multipart/form-data">
    
       <!-- 갤러리 시작 -->
@@ -199,17 +204,17 @@ table.upload td {
     
     <div class="tz-gallery">
         <div class="row">
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-4 col-md-4">
                 <a class="lightbox" href="../images/park.jpg">
                     <img src="../images/park.jpg" alt="Park">
                 </a>
             </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-4 col-md-4">
                 <a class="lightbox" href="../images/bridge.jpg">
                     <img src="../images/bridge.jpg" alt="Bridge">
                 </a>
             </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-4 col-md-4">
                 <a class="lightbox" href="../images/tunnel.jpg">
                     <img src="../images/tunnel.jpg" alt="Tunnel">
                 </a>
